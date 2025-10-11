@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv1vt0ocffs1h"]
+
+[ext_resource type="Script" uid="uid://dhny2whh580we" path="res://characters/player.gd" id="1_dnjla"]
+[ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="2_3eadt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tory2"]
+atlas = ExtResource("2_3eadt")
+region = Rect2(56, 652, 484, 577)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0jl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tory2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
+radius = 58.077534
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
+radius = 109.0
+height = 404.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dnjla")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_x0jl3")
+
+[node name="floor" type="CollisionShape2D" parent="."]
+position = Vector2(16, 130)
+shape = SubResource("CircleShape2D_3eadt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_3eadt")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnwxifc1xepqb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jv5i6"]
+
+[node name="sorting" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(950, 734)
+scale = Vector2(1340, 417.00006)
+mesh = SubResource("BoxMesh_jv5i6")
