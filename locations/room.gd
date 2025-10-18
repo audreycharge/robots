@@ -18,5 +18,5 @@ func _on_body_entered(body: Node2D) -> void:
 			if (r.visible):
 				r.visible = false
 		room.visible = true
-		print(str("test",room, body))
+		#print(str("test",room, body))
 	pass # Replace with function body.

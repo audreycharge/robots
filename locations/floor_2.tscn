@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://l7mfodb7bu6o"]
+
+[ext_resource type="Script" uid="uid://es6k2f88ww4b" path="res://locations/floor_2.gd" id="1_agoid"]
+[ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="2_xc2lk"]
+
+[node name="floor_2" type="Node2D"]
+script = ExtResource("1_agoid")
+
+[node name="EntranceMarkers" type="Node2D" parent="."]
+
+[node name="AreaTriggers" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
+position = Vector2(57, 558)
+connected_scene = "floor_1"
+
+[node name="sorting" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
+position = Vector2(1056, 523)
+connected_scene = "sorting"
+
+[node name="any" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
+position = Vector2(318, 821)
+connected_scene = "floor_1"

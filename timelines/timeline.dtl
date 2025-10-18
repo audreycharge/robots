@@ -1,0 +1,9 @@
+green: Who am I?
+green: Who are you?
+siren: I'm Siren
+- yo
+	siren: huh
+- hi
+	siren: hi
+siren: im gonna let you finish booting
+[text_input var="response"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjunwl3cw0srj"]
+
+[ext_resource type="Script" uid="uid://cfbdriw43n1uj" path="res://items/hud.gd" id="1_7ynxm"]
+[ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="2_2v4x5"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ynxm")
+
+[node name="talk" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.011000001
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 11.119999
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Press E to talk"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.054
+anchor_bottom = 0.060000002
+offset_left = 43.0
+offset_top = 41.0
+offset_right = 171.32
+offset_bottom = 79.2
+text = "test"
+
+[node name="Temperature" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1742.0
+offset_top = 55.0
+offset_right = 1858.0
+offset_bottom = 93.0
+text = "Temperature:"
+
+[node name="Power" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1748.0
+offset_top = 94.0
+offset_right = 1864.0
+offset_bottom = 132.0
+text = "Power:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -136.0
+offset_right = 208.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="network" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_2v4x5")
+
+[node name="messages" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_2v4x5")
+
+[node name="settings" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_2v4x5")

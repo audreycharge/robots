@@ -4,7 +4,8 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 var speed = 1.0
 const JUMP_VELOCITY = -400.0
-var dialoging = false;
+var dialoging;
+var interactable = false
 
 #@export var inventory: Inventory
 @onready var _animated_sprite = $AnimatedSprite2D
@@ -43,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#handleCollision()
 	#updateAnimation()
+	#get_node("talkbox/CollisionShape2D").get_overlapping_areas()
 	
 
 
@@ -54,8 +56,19 @@ func handleCollision():
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("talking")
+	print(area.name)
+	if area.get_parent().name == "Siren":
+		get_node("Camera2D/HUD/talk").visible = true
+		interactable = true
+		dialoging = area.get_parent()
 	pass # Replace with function body.
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and interactable:
+		interactable = false
+		var layout = Dialogic.start("timeline")
+		layout.register_character(load("res://timelines/green.dch"), $speechbubble)
+		layout.register_character(load("res://timelines/siren.dch"), dialoging.get_node("speechbubble"))
 
 func updateAnimation():
 	var currSprite = _animated_sprite.animation;
@@ -82,3 +95,10 @@ func updateAnimation():
 	spriteString = string1 + "_" + string2
 	_animated_sprite.play(spriteString)
 	
+
+
+func _on_talkbox_area_exited(area: Area2D) -> void:
+	get_node("Camera2D/HUD/talk").visible = false
+	interactable = false
+	dialoging = null
+	pass # Replace with function body.

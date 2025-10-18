@@ -7,5 +7,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print('tree hit');
 		
-		#scene_manager.change_scene(get_owner(), connected_scene)
+		if connected_scene == "sorting":
+			scene_manager.go_to_minigame(get_owner(), connected_scene)
+		else:
+			scene_manager.change_scene(get_owner(), connected_scene)
 	pass # Replace with function body.

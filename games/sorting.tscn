@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnwxifc1xepqb"]
+[gd_scene load_steps=9 format=3 uid="uid://cnwxifc1xepqb"]
 
 [ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="1_fuicm"]
 [ext_resource type="Script" uid="uid://c1tujeslpsamh" path="res://games/magnet.gd" id="2_v33c3"]
+[ext_resource type="Script" uid="uid://chhl6r02nefpn" path="res://games/items.gd" id="3_v33c3"]
+[ext_resource type="PackedScene" uid="uid://dxkkuo1y5sok5" path="res://items/nuts.tscn" id="4_3k1b5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jv5i6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv5i6"]
 size = Vector2(0.9972899, 1.0071943)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuicm"]
-size = Vector2(128, 126)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v33c3"]
 size = Vector2(130, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuicm"]
+size = Vector2(128, 126)
 
 [node name="sorting" type="Node2D"]
 
@@ -27,18 +29,22 @@ mesh = SubResource("BoxMesh_jv5i6")
 scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_jv5i6")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="magnet" type="CharacterBody2D" parent="."]
 script = ExtResource("2_v33c3")
 
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Icon" type="Sprite2D" parent="magnet"]
 texture = ExtResource("1_fuicm")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D/Icon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Icon/Area2D"]
-shape = SubResource("RectangleShape2D_fuicm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet"]
 shape = SubResource("RectangleShape2D_v33c3")
 
-[connection signal="input_event" from="box/Area2D" to="CharacterBody2D" method="_on_area_2d_input_event"]
+[node name="Area2D" type="Area2D" parent="magnet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet/Area2D"]
+shape = SubResource("RectangleShape2D_fuicm")
+
+[node name="items" type="Node" parent="."]
+script = ExtResource("3_v33c3")
+nut = ExtResource("4_3k1b5")
+
+[connection signal="input_event" from="box/Area2D" to="magnet" method="_on_area_2d_input_event"]

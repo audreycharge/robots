@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv1vt0ocffs1h"]
+[gd_scene load_steps=9 format=3 uid="uid://bv1vt0ocffs1h"]
 
 [ext_resource type="Script" uid="uid://dhny2whh580we" path="res://characters/player.gd" id="1_dnjla"]
 [ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="2_3eadt"]
+[ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="3_tory2"]
+[ext_resource type="PackedScene" uid="uid://bysv0dmkuw1e1" path="res://helper_scripts/power.tscn" id="4_x0jl3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tory2"]
 atlas = ExtResource("2_3eadt")
@@ -26,9 +28,23 @@ radius = 155.0
 height = 552.0
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dnjla")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("3_tory2")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1922.0
+offset_top = -1077.0
+offset_right = 1922.0
+offset_bottom = 1077.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -38,10 +54,16 @@ sprite_frames = SubResource("SpriteFrames_x0jl3")
 position = Vector2(16, 230)
 shape = SubResource("CircleShape2D_3eadt")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="talkbox" type="Area2D" parent="."]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox"]
 shape = SubResource("CapsuleShape2D_3eadt")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Power" parent="." instance=ExtResource("4_x0jl3")]
+
+[node name="speechbubble" type="Marker2D" parent="."]
+position = Vector2(86, -214)
+
+[connection signal="area_entered" from="talkbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="talkbox" to="." method="_on_talkbox_area_exited"]

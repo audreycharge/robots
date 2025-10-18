@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bysv0dmkuw1e1"]
+
+[ext_resource type="Script" uid="uid://dk7oqny5dy5q7" path="res://helper_scripts/power.gd" id="1_n2jeh"]
+
+[node name="Power" type="Node"]
+script = ExtResource("1_n2jeh")
