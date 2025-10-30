@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnwxifc1xepqb"]
+[gd_scene load_steps=11 format=3 uid="uid://cnwxifc1xepqb"]
 
 [ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="1_fuicm"]
+[ext_resource type="Script" uid="uid://bohpw0am63vbw" path="res://games/sorting.gd" id="1_ookni"]
+[ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="2_ix0er"]
 [ext_resource type="Script" uid="uid://c1tujeslpsamh" path="res://games/magnet.gd" id="2_v33c3"]
 [ext_resource type="Script" uid="uid://chhl6r02nefpn" path="res://games/items.gd" id="3_v33c3"]
 [ext_resource type="PackedScene" uid="uid://dxkkuo1y5sok5" path="res://items/nuts.tscn" id="4_3k1b5"]
@@ -17,6 +19,7 @@ size = Vector2(130, 126)
 size = Vector2(128, 126)
 
 [node name="sorting" type="Node2D"]
+script = ExtResource("1_ookni")
 
 [node name="box" type="MeshInstance2D" parent="."]
 position = Vector2(991, 823)
@@ -47,4 +50,18 @@ shape = SubResource("RectangleShape2D_fuicm")
 script = ExtResource("3_v33c3")
 nut = ExtResource("4_3k1b5")
 
+[node name="HUD" parent="." instance=ExtResource("2_ix0er")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1915.0
+offset_bottom = 1093.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Glitch" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="input_event" from="box/Area2D" to="magnet" method="_on_area_2d_input_event"]
+[connection signal="timeout" from="Glitch" to="magnet" method="_on_glitch_timeout"]

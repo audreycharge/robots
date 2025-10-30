@@ -39,20 +39,28 @@ offset_bottom = 79.2
 text = "test"
 
 [node name="Temperature" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1742.0
-offset_top = 55.0
-offset_right = 1858.0
-offset_bottom = 93.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -308.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Temperature:"
 
 [node name="Power" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 1748.0
-offset_top = 94.0
-offset_right = 1864.0
-offset_bottom = 132.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -307.0
+offset_top = 51.0
+offset_bottom = 89.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Power:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

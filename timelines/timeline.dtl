@@ -7,3 +7,7 @@ siren: I'm Siren
 	siren: hi
 siren: im gonna let you finish booting
 [text_input var="response"]
+siren: begin calibration tests
+siren: use your magnets to scale any wall
+[wait time="10.0"]
+siren: hmm i see

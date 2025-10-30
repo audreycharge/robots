@@ -4,3 +4,10 @@
 
 [node name="Power" type="Node"]
 script = ExtResource("1_n2jeh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,14 @@
+phyter: You are not authorized.
+green: Oh I have my task assignment here.
+green: Just let me find it.
+It was here a minute ago?
+[wait time="3.0"]
+Time's up.
+phyter: You have 3 seconds to go back to your floor, and I'll pretend I didn't see you
+green: Wait! I promise I had it!
+cylon: Phyter! There you are!
+cylon: Hey stranger!
+cylon: Haven't seen you around before.
+cylon: What brings you to the second floor?
+cylon: Don't all our scrap get automatically shunted to your end?
+green: <Empty Text Event>

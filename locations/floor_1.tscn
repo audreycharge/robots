@@ -4373,11 +4373,14 @@ offset_bottom = 829.0
 
 [node name="EntranceMarkers" type="Node2D" parent="."]
 
-[node name="floor_2" parent="EntranceMarkers" instance=ExtResource("4_bn1mq")]
+[node name="floor_2" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(1315, 390)
+
+[node name="floor_2" parent="." instance=ExtResource("4_bn1mq")]
 position = Vector2(1469, 387)
 connected_scene = "floor_2"
 
 [connection signal="body_entered" from="map/WorldLayer/Area2D" to="map/WorldLayer/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="map/room2/Area2D" to="map/room2/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="map/hallway/Area2D" to="map/hallway/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="EntranceMarkers/floor_2" to="Player" method="_on_area_triggers_body_entered"]
+[connection signal="body_entered" from="floor_2" to="Player" method="_on_area_triggers_body_entered"]

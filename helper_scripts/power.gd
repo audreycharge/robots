@@ -1,7 +1,9 @@
 class_name Power extends Node
 
-@export var power_level: int = 100
+@export var power: int = 100:
+	get: return power
 @export var drainage: int = 1;
+const max_power = 100
 
 signal low_battery
 
@@ -12,9 +14,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if power_level < 10:
+	if power < 10:
 		low_battery.emit()
-	pass
+	
 	
 func drain_power(amount: int):
-	power_level -= amount
+	power -= amount
+
+func charge():
+	if power < max_power:
+		power+=1
+
+
+func _on_timer_timeout() -> void:
+	power -= 1
+	pass # Replace with function body.

@@ -4,7 +4,7 @@ const SPEED = 500
 var size = 1;
 var og_scale;
 var magnetized = false
-
+var rand_size
 
 
 func _init() -> void:
@@ -14,14 +14,18 @@ func _process(delta):
 	var vec = get_viewport().get_mouse_position() - self.position # getting the vector from self to the mouse
 	#vec = vec.normalized() * delta * SPEED # normalize it and multiply by time and speed
 	position += vec # move by that vector
-	scale = og_scale * size
+	if size < 0.5:
+		size = 0.5
+	
+	scale = og_scale * (1 + size/2)
+	#print_debug(scene_manager.temp.temp)
 	
 	if magnetized == true:
 		var bodies = get_child(2).get_overlapping_bodies()
 		for i in (size*2):
 			if i < get_child(2).get_overlapping_bodies().size():
 				if bodies[i].name != "magnet":
-					print(bodies[i].name)
+					#print(bodies[i].name)
 					bodies[i].position += vec
 	
 func _input(event):
@@ -37,3 +41,9 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton and event.is_pressed():
 		#magnetized = !magnetized
 		pass # Replace with function body.
+
+
+func _on_glitch_timeout() -> void:
+	rand_size = randi()% 6 / 2
+	size = rand_size
+	pass # Replace with function body.

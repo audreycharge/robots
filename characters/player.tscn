@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv1vt0ocffs1h"]
+[gd_scene load_steps=10 format=3 uid="uid://bv1vt0ocffs1h"]
 
 [ext_resource type="Script" uid="uid://dhny2whh580we" path="res://characters/player.gd" id="1_dnjla"]
 [ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="2_3eadt"]
 [ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="3_tory2"]
-[ext_resource type="PackedScene" uid="uid://bysv0dmkuw1e1" path="res://helper_scripts/power.tscn" id="4_x0jl3"]
+[ext_resource type="Script" uid="uid://c5no137e25ki5" path="res://characters/magnet_range.gd" id="6_h1q25"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tory2"]
 atlas = ExtResource("2_3eadt")
@@ -16,7 +16,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_tory2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tory2")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
 "speed": 5.0
 }]
 
@@ -26,6 +44,9 @@ radius = 58.077534
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
 radius = 155.0
 height = 552.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evndh"]
+radius = 431.11484
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -49,6 +70,7 @@ size_flags_vertical = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_x0jl3")
+animation = &"idle_right"
 
 [node name="floor" type="CollisionShape2D" parent="."]
 position = Vector2(16, 230)
@@ -60,10 +82,14 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox"]
 shape = SubResource("CapsuleShape2D_3eadt")
 
-[node name="Power" parent="." instance=ExtResource("4_x0jl3")]
-
 [node name="speechbubble" type="Marker2D" parent="."]
 position = Vector2(86, -214)
+
+[node name="magnet_range" type="Area2D" parent="."]
+script = ExtResource("6_h1q25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet_range"]
+shape = SubResource("CircleShape2D_evndh")
 
 [connection signal="area_entered" from="talkbox" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="talkbox" to="." method="_on_talkbox_area_exited"]

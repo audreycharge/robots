@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://djv1ttfsy0jqs"]
 
 [node name="redshift" type="Node2D"]
+
+[node name="original" type="Node2D" parent="."]
+
+[node name="distant" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="distant"]

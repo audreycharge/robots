@@ -1,12 +1,8 @@
-extends BaseScene
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	super()
-	print_debug($portals/sorting.global_position)
-	print_debug($EntranceMarkers/sorting.global_position)
-	print_debug(player.global_position)
 	pass # Replace with function body.
 
 

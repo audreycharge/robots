@@ -8,14 +8,18 @@ script = ExtResource("1_agoid")
 
 [node name="EntranceMarkers" type="Node2D" parent="."]
 
-[node name="AreaTriggers" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
+[node name="floor_1" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(131, 558)
+
+[node name="sorting" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(1739, 560)
+
+[node name="portals" type="Node2D" parent="."]
+
+[node name="floor_1" parent="portals" instance=ExtResource("2_xc2lk")]
 position = Vector2(57, 558)
 connected_scene = "floor_1"
 
-[node name="sorting" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
-position = Vector2(1056, 523)
+[node name="sorting" parent="portals" instance=ExtResource("2_xc2lk")]
+position = Vector2(1868, 554)
 connected_scene = "sorting"
-
-[node name="any" parent="EntranceMarkers" instance=ExtResource("2_xc2lk")]
-position = Vector2(318, 821)
-connected_scene = "floor_1"

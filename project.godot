@@ -23,10 +23,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"cylon": "res://timelines/cylon.dch",
 "green": "res://timelines/green.dch",
+"phyter": "res://timelines/phyter.dch",
 "siren": "res://timelines/siren.dch"
 }
 directories/dtl_directory={
+"f1_leaving": "res://timelines/f1_leaving.dtl",
+"f2_1": "res://timelines/f2_1.dtl",
+"f2_connect": "res://timelines/f2_connect.dtl",
+"f2_fun": "res://timelines/f2_fun.dtl",
 "timeline": "res://timelines/timeline.dtl"
 }
 layout/style_directory={

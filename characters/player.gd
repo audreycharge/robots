@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = direction * SPEED
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED * speed
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	#handleCollision()
-	#updateAnimation()
+	updateAnimation()
 	#get_node("talkbox/CollisionShape2D").get_overlapping_areas()
 	
 
@@ -75,11 +75,11 @@ func updateAnimation():
 	var spriteString = currSprite;
 	var string1
 	var string2
+	#print(currSprite)
 	
 	#if !alive:
 		#_animated_sprite.play("die")
 		#return
-	
 	if currSprite.contains("left"):
 		string2 = "left"
 	else:
@@ -88,11 +88,13 @@ func updateAnimation():
 		string1 = "idle"
 	else:
 		string1 = "walk"
-	if velocity.x > 0 :
+	if velocity.x > 0:
 		string2 = "right"
 	elif velocity.x < 0:
 		string2 = "left"
 	spriteString = string1 + "_" + string2
+	#print(spriteString)
+	
 	_animated_sprite.play(spriteString)
 	
 
