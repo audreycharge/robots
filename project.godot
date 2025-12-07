@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="robots"
-run/main_scene="uid://b00yiv4o82fec"
+run/main_scene="uid://1wtnucgbtok5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -50,6 +50,7 @@ layout/default_style="res://timelines/dialog_style.tres"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
