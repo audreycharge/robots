@@ -1,0 +1,6 @@
+siren: Starting calibration tests\: Follow my example.
+siren: Pick up this metal with your magnets.
+[signal arg="calibrate_magnet"]
+[end_timeline]
+label climb wall (climb wall)
+siren: <Empty Text Event>

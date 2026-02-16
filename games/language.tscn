@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://haw0e7nsyn5w"]
+
+[ext_resource type="Script" uid="uid://uwerrkjxi4hq" path="res://games/language.gd" id="1_nhyu7"]
+
+[node name="Language" type="Node2D" unique_id=1456959170]
+script = ExtResource("1_nhyu7")
+
+[node name="keyboard" type="HBoxContainer" parent="." unique_id=2119422268]
+offset_left = 493.0
+offset_top = 897.0
+offset_right = 1399.0
+offset_bottom = 1022.0
+size_flags_horizontal = 3
+
+[node name="sine" type="Button" parent="keyboard" unique_id=820510899]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "#"
+
+[node name="cos" type="Button" parent="keyboard" unique_id=754075992]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$"
+
+[node name="tan" type="Button" parent="keyboard" unique_id=1033974004]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "%"
+
+[node name="bru" type="Button" parent="keyboard" unique_id=1394237994]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "^"
+
+[node name="gea" type="Button" parent="keyboard" unique_id=1412252240]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "&"
+
+[node name="delete" type="Button" parent="keyboard" unique_id=845618587]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "delete"
+
+[node name="Code" type="Label" parent="." unique_id=1421768552]
+offset_left = 551.0
+offset_top = 711.0
+offset_right = 1356.0
+offset_bottom = 873.0
+theme_override_font_sizes/font_size = 127
+text = "_ _ _ _ _ _ _ _"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="keyboard/sine" to="." method="_on_sine_pressed"]
+[connection signal="pressed" from="keyboard/cos" to="." method="_on_cos_pressed"]
+[connection signal="pressed" from="keyboard/tan" to="." method="_on_tan_pressed"]
+[connection signal="pressed" from="keyboard/bru" to="." method="_on_bru_pressed"]
+[connection signal="pressed" from="keyboard/gea" to="." method="_on_gea_pressed"]
+[connection signal="pressed" from="keyboard/delete" to="." method="_on_delete_pressed"]
