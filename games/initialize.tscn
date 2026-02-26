@@ -1,3 +1,140 @@
 [gd_scene format=3 uid="uid://s8jupa4agaud"]
 
+[ext_resource type="Texture2D" uid="uid://bgmhbttgiqix2" path="res://assets/calibration/head.png" id="1_7vlnj"]
+[ext_resource type="Script" uid="uid://bknwcf3uwi0x2" path="res://games/initialize.gd" id="1_mhrwy"]
+[ext_resource type="Texture2D" uid="uid://cf2dyovbvy477" path="res://assets/calibration/torso.png" id="2_mhrwy"]
+[ext_resource type="Texture2D" uid="uid://cybl2amrmk4fb" path="res://assets/calibration/leg.png" id="3_7vj1e"]
+[ext_resource type="Texture2D" uid="uid://8707mtryoqyo" path="res://assets/calibration/arm.png" id="4_4gdf5"]
+[ext_resource type="Texture2D" uid="uid://co30p7vknlsvj" path="res://assets/calibration/foot.png" id="5_47ypq"]
+[ext_resource type="Script" uid="uid://nsbvlk8lkmyk" path="res://games/calibrate.gd" id="7_7vj1e"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7vj1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vlnj"]
+radius = 107.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vj1e"]
+radius = 73.0
+height = 266.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhrwy"]
+radius = 44.0
+height = 244.784
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gdf5"]
+radius = 44.0
+height = 180.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ypq"]
+size = Vector2(96, 210)
+
 [node name="initialize" type="Node2D" unique_id=1163754654]
+script = ExtResource("1_mhrwy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1742250018]
+offset_right = 1948.0
+offset_bottom = 1101.0
+texture = SubResource("CanvasTexture_7vj1e")
+
+[node name="Torso" type="Sprite2D" parent="." unique_id=1936378656]
+position = Vector2(928.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mhrwy")
+
+[node name="Leg" type="Sprite2D" parent="." unique_id=623876310]
+position = Vector2(928.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7vj1e")
+
+[node name="Arm" type="Sprite2D" parent="." unique_id=2038107297]
+position = Vector2(928.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_4gdf5")
+
+[node name="Foot" type="Sprite2D" parent="." unique_id=827292893]
+position = Vector2(928.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_47ypq")
+
+[node name="Leg2" type="Sprite2D" parent="." unique_id=360483236]
+position = Vector2(1024.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7vj1e")
+flip_h = true
+
+[node name="Arm2" type="Sprite2D" parent="." unique_id=353338453]
+position = Vector2(1024.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_4gdf5")
+flip_h = true
+
+[node name="Foot2" type="Sprite2D" parent="." unique_id=1700939345]
+position = Vector2(1024.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_47ypq")
+flip_h = true
+
+[node name="Body" type="Node2D" parent="." unique_id=408998656]
+script = ExtResource("7_7vj1e")
+
+[node name="Head" type="Sprite2D" parent="Body" unique_id=669919983]
+position = Vector2(928.25, 544.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7vlnj")
+
+[node name="Area2D" type="Area2D" parent="Body/Head" unique_id=1238478315]
+position = Vector2(83.5, -686.5)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Head/Area2D" unique_id=419049293]
+shape = SubResource("CircleShape2D_7vlnj")
+
+[node name="torso" type="Area2D" parent="Body" unique_id=1222335742]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/torso" unique_id=571688857]
+position = Vector2(978, 449)
+shape = SubResource("CapsuleShape2D_7vj1e")
+
+[node name="arm" type="Area2D" parent="Body" unique_id=1534946981]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/arm" unique_id=46681967]
+position = Vector2(775.99994, 429.99997)
+rotation = 1.0611602
+shape = SubResource("CapsuleShape2D_mhrwy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Body/arm" unique_id=2112505665]
+position = Vector2(1176, 428.99997)
+rotation = -1.0611602
+shape = SubResource("CapsuleShape2D_mhrwy")
+
+[node name="leg" type="Area2D" parent="Body" unique_id=1894124884]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/leg" unique_id=1384384701]
+position = Vector2(867, 654)
+shape = SubResource("CapsuleShape2D_4gdf5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Body/leg" unique_id=1338238839]
+position = Vector2(1085, 654)
+shape = SubResource("CapsuleShape2D_4gdf5")
+
+[node name="foot" type="Area2D" parent="Body" unique_id=1016230167]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/foot" unique_id=604197032]
+position = Vector2(858, 882)
+shape = SubResource("RectangleShape2D_47ypq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Body/foot" unique_id=1034126282]
+position = Vector2(1095, 882)
+shape = SubResource("RectangleShape2D_47ypq")
+
+[node name="Timer" type="Timer" parent="." unique_id=508246800]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="done" from="Body" to="." method="_on_body_done"]
+[connection signal="input_event" from="Body/Head/Area2D" to="Body" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Body/torso" to="Body" method="_on_torso_input_event"]
+[connection signal="input_event" from="Body/arm" to="Body" method="_on_arm_input_event"]
+[connection signal="input_event" from="Body/leg" to="Body" method="_on_leg_input_event"]
+[connection signal="input_event" from="Body/foot" to="Body" method="_on_foot_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

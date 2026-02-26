@@ -4,7 +4,7 @@ extends Control
 @onready var exit_button = $VBoxContainer/Exit
 @onready var controls_button = $VBoxContainer/Controls
 @onready var credits_button = $VBoxContainer/Credits
-@onready var start_game = "res://locations/floor_1.tscn"
+@onready var start_game = "res://games/initialize.tscn"
 
 
 # Called when the node enters the scene tree for the first time.
