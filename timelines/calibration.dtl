@@ -1,6 +1,14 @@
-siren: Starting calibration tests\: Follow my example.
-siren: Pick up this metal with your magnets.
+siren: Starting calibration tests\:
+siren: Pick up any metal with your magnets.
 [signal arg="calibrate_magnet"]
 [end_timeline]
-label climb wall (climb wall)
-siren: <Empty Text Event>
+label overpowered (overpowered)
+siren: Too big! Too big! Lower it!
+[end_timeline]
+label lower (lower)
+siren: A large burst happens sometimes. Now see if you can climb this wall.
+[signal arg="siren_wall"]
+[end_timeline]
+label climb_wall (climb_wall)
+siren: Try increasing your output until you can carry your own weight.
+[end_timeline]

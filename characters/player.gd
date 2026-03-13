@@ -57,18 +57,18 @@ func handleCollision():
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
-	if area.get_parent().name == "Siren":
+	if area.get_parent().is_in_group("robot"):
 		get_node("Camera2D/HUD/talk").visible = true
 		interactable = true
-		dialoging = area.get_parent()
+		
+		dialoging = area.get_parent().name
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and interactable:
 		interactable = false
-		var layout = Dialogic.start("timeline")
-		layout.register_character(load("res://timelines/green.dch"), $speechbubble)
-		layout.register_character(load("res://timelines/siren.dch"), dialoging.get_node("speechbubble"))
+		if dialoging == "Siren":
+			var layout = Dialogic.start("timeline")
 
 func updateAnimation():
 	var currSprite = _animated_sprite.animation;

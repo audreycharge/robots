@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk2j01yuw6st5"]
+[gd_scene format=3 uid="uid://bk2j01yuw6st5"]
 
 [ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="1_er5n6"]
 
@@ -24,25 +24,27 @@ radius = 128.06248
 radius = 215.0
 height = 696.0
 
-[node name="Siren" type="CharacterBody2D" groups=["robot"]]
+[node name="Siren" type="CharacterBody2D" unique_id=988852894 groups=["robot"]]
 y_sort_enabled = true
 scale = Vector2(0.6, 0.6)
 collision_mask = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1255527157]
 y_sort_enabled = true
+position = Vector2(-13.333313, -239.99988)
 sprite_frames = SubResource("SpriteFrames_ybuc7")
 
-[node name="floor" type="CollisionShape2D" parent="."]
-position = Vector2(19, 241)
+[node name="floor" type="CollisionShape2D" parent="." unique_id=730318635]
+position = Vector2(5.666687, 1.000061)
 shape = SubResource("CircleShape2D_um1vd")
 
-[node name="siren" type="Area2D" parent="."]
+[node name="siren" type="Area2D" parent="." unique_id=1954208510]
+position = Vector2(-13.333313, -239.99988)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="siren"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="siren" unique_id=1451395310]
 position = Vector2(8, 0)
 shape = SubResource("CapsuleShape2D_er5n6")
 
-[node name="speechbubble" type="Marker2D" parent="."]
-position = Vector2(-106.666664, -238.33333)
+[node name="speechbubble" type="Marker2D" parent="." unique_id=661957533]
+position = Vector2(-119.99997, -478.3333)

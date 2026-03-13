@@ -4,8 +4,9 @@ class_name Power extends Node
 	get: return power
 @export var drainage: int = 1;
 const max_power = 100
+var sent = false
 
-signal low_battery
+signal depleted
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,8 +15,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if power < 10:
-		low_battery.emit()
+	if power <= 15 and !sent:
+		depleted.emit()
+		sent = true
 	
 	
 func drain_power(amount: int):

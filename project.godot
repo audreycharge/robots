@@ -40,16 +40,13 @@ directories/dtl_directory={
 "f2_fun": "res://timelines/f2_fun.dtl",
 "timeline": "res://timelines/timeline.dtl"
 }
-layout/style_directory={
-"": "res://timelines/dialog_style.tres",
-"dialog_style": "res://timelines/dialog_style.tres"
-}
+layout/style_directory={}
 variables={
 "done": false,
 "response": ""
 }
-layout/style_list=["res://timelines/dialog_style.tres"]
-layout/default_style="res://timelines/dialog_style.tres"
+layout/style_list=[""]
+layout/default_style=""
 
 [display]
 
@@ -115,3 +112,7 @@ click={
 
 2d_physics/layer_1="world"
 2d_physics/layer_2="npc"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

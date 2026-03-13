@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjunwl3cw0srj"]
+[gd_scene format=3 uid="uid://bjunwl3cw0srj"]
 
 [ext_resource type="Script" uid="uid://cfbdriw43n1uj" path="res://items/hud.gd" id="1_7ynxm"]
 [ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="2_2v4x5"]
 
-[node name="HUD" type="Control"]
+[node name="HUD" type="Control" unique_id=2048183109]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7ynxm")
 
-[node name="talk" type="Label" parent="."]
+[node name="talk" type="Label" parent="." unique_id=431935580]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -27,7 +27,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Press E to talk"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1521509421]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.054
@@ -38,7 +38,7 @@ offset_right = 171.32
 offset_bottom = 79.2
 text = "test"
 
-[node name="Temperature" type="Label" parent="."]
+[node name="Temperature" type="Label" parent="." unique_id=376256383]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -50,20 +50,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Temperature:"
 
-[node name="Power" type="Label" parent="."]
+[node name="PowerProgress" type="ProgressBar" parent="." unique_id=1517939201]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -307.0
-offset_top = 51.0
-offset_bottom = 89.0
+offset_left = -420.0
+offset_top = 144.0
+offset_right = -24.0
+offset_bottom = 257.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Power:"
+theme_override_font_sizes/font_size = 40
+step = 1.0
+value = 7.91
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=366331415]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -77,14 +78,14 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="network" type="Button" parent="HBoxContainer"]
+[node name="network" type="Button" parent="HBoxContainer" unique_id=430756333]
 layout_mode = 2
 icon = ExtResource("2_2v4x5")
 
-[node name="messages" type="Button" parent="HBoxContainer"]
+[node name="messages" type="Button" parent="HBoxContainer" unique_id=674405872]
 layout_mode = 2
 icon = ExtResource("2_2v4x5")
 
-[node name="settings" type="Button" parent="HBoxContainer"]
+[node name="settings" type="Button" parent="HBoxContainer" unique_id=181725923]
 layout_mode = 2
 icon = ExtResource("2_2v4x5")

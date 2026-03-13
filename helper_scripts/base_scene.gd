@@ -15,7 +15,7 @@ func _ready():
 		
 func position_player() -> void:
 	var last_scene = scene_manager.last_scene_name
-	#print("come back")
+	print_debug("come back")
 	if last_scene.is_empty():
 		last_scene = "any"
 	for entrance in entrance_markers.get_children():

@@ -18,11 +18,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#var power_amount = power.
-	$Power.text = str("Power: ", power.power)
-	if power.power < 98:
+	#var power_amount = power
+	$PowerProgress.value = power.power
+	#if power.power < 98:
+		#$PowerProgress.add_theme_stylebox_override()
 		#$Power.remove_theme_color_override()
-		$Power.add_theme_color_override("default_color", Color(1,0,0,1))
+		#$Power.add_theme_color_override("default_color", Color(1,0,0,1))
 	$Temperature.text = str("Temperature: ", temperature.temp)
 	pass
 

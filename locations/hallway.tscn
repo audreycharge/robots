@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://chdnmj154e4h6"]
+
+[ext_resource type="Texture2D" uid="uid://dt0gk7cqgwjnh" path="res://assets/hallend.png" id="1_2seor"]
+[ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_ijndg"]
+[ext_resource type="Texture2D" uid="uid://bhf0lrm1dqu6n" path="res://assets/hallmid.png" id="2_bgp74"]
+[ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="3_bgp74"]
+[ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="4_dgtn4"]
+[ext_resource type="Texture2D" uid="uid://dtet6n45n4pfn" path="res://assets/frontdoor.png" id="5_0vc41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2seor"]
+size = Vector2(1730, 761)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgp74"]
+size = Vector2(1730, 231.5)
+
+[node name="hallway" type="Node2D" unique_id=1892908119]
+y_sort_enabled = true
+script = ExtResource("1_ijndg")
+
+[node name="Hallright" type="Sprite2D" parent="." unique_id=208531435]
+texture = ExtResource("1_2seor")
+
+[node name="Area2D" type="StaticBody2D" parent="Hallright" unique_id=280574897]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hallright/Area2D" unique_id=870690258]
+polygon = PackedVector2Array(-906, 279, -900.1095, -474.43344, 894.0742, -474.43344, 1104, -284, 1109, 705, -1089, 706, -902, 461, 1050, 463, 863.05884, 284.99115)
+
+[node name="Hallleft" type="Sprite2D" parent="." unique_id=789354812]
+position = Vector2(-2976, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_2seor")
+
+[node name="Area2D" type="StaticBody2D" parent="Hallleft" unique_id=1301036910]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hallleft/Area2D" unique_id=271577294]
+polygon = PackedVector2Array(-906, 279, -900.1095, -474.43344, 894.0742, -474.43344, 1104, -284, 1109, 705, -1089, 706, -902, 461, 1050, 463, 863.05884, 284.99115)
+
+[node name="Hallmid" type="Sprite2D" parent="." unique_id=332262355]
+position = Vector2(-1659, 0)
+texture = ExtResource("2_bgp74")
+
+[node name="Area2D" type="StaticBody2D" parent="Hallmid" unique_id=1887987936]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallmid/Area2D" unique_id=1283090194]
+position = Vector2(-39, -101.5)
+shape = SubResource("RectangleShape2D_2seor")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallmid/Area2D" unique_id=1905310039]
+position = Vector2(-39, 577.25)
+shape = SubResource("RectangleShape2D_bgp74")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=580815033]
+position = Vector2(-2939, 6)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_bgp74")
+
+[node name="sort_entrance" type="Sprite2D" parent="." unique_id=2107782238]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(606, 388)
+texture = ExtResource("5_0vc41")
+offset = Vector2(0, -200)
+
+[node name="EntranceMarkers" type="Node2D" parent="." unique_id=1511272359]
+
+[node name="homeroom" type="Marker2D" parent="EntranceMarkers" unique_id=626689557]
+position = Vector2(-3121, 320)
+
+[node name="sorting_room" type="Marker2D" parent="EntranceMarkers" unique_id=367245150]
+
+[node name="init_room" type="Marker2D" parent="EntranceMarkers" unique_id=880657337]
+
+[node name="init_room2" type="Marker2D" parent="EntranceMarkers" unique_id=1549053967]
+
+[node name="elevator" type="Marker2D" parent="EntranceMarkers" unique_id=446651900]
+position = Vector2(-1459, 288)
+
+[node name="homeroom" parent="." unique_id=1901776446 instance=ExtResource("4_dgtn4")]
+position = Vector2(-3428, 283)
+rotation = 3.1415925
+scale = Vector2(1, -1)
+connected_scene = "homeroom"
+
+[node name="sorting_room" parent="." unique_id=1934322074 instance=ExtResource("4_dgtn4")]
+position = Vector2(615, 452)
+rotation = 3.1415925
+scale = Vector2(1, -1)
+connected_scene = "sorting_room"

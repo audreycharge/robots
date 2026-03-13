@@ -1,19 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv1vt0ocffs1h"]
+[gd_scene format=3 uid="uid://bv1vt0ocffs1h"]
 
 [ext_resource type="Script" uid="uid://dhny2whh580we" path="res://characters/player.gd" id="1_dnjla"]
-[ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="2_3eadt"]
 [ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="3_tory2"]
+[ext_resource type="Texture2D" uid="uid://38hts1t2xwjq" path="res://assets/tilesheet2.png" id="4_evndh"]
 [ext_resource type="Script" uid="uid://c5no137e25ki5" path="res://characters/magnet_range.gd" id="6_h1q25"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tory2"]
-atlas = ExtResource("2_3eadt")
-region = Rect2(56, 652, 484, 577)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0jl3"]
+atlas = ExtResource("4_evndh")
+region = Rect2(0, 512, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1q25"]
+atlas = ExtResource("4_evndh")
+region = Rect2(0, 512, 256, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x0jl3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tory2")
+"texture": SubResource("AtlasTexture_x0jl3")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -21,10 +25,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tory2")
+"texture": SubResource("AtlasTexture_h1q25")
 }],
 "loop": true,
 "name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"talking",
 "speed": 5.0
 }, {
 "frames": [],
@@ -39,56 +48,63 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
-radius = 58.077534
+radius = 56.499992
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
 radius = 155.0
 height = 552.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evndh"]
-radius = 431.11484
+radius = 486.25635
 
-[node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+[node name="Player" type="CharacterBody2D" unique_id=1018792434]
+y_sort_enabled = true
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_dnjla")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1929251479]
+position = Vector2(-10, -170)
 
-[node name="HUD" parent="Camera2D" instance=ExtResource("3_tory2")]
+[node name="HUD" parent="Camera2D" unique_id=1716932787 instance=ExtResource("3_tory2")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1922.0
-offset_top = -1077.0
-offset_right = 1922.0
-offset_bottom = 1077.0
+offset_left = -1195.6731
+offset_top = -670.0
+offset_right = 1195.6731
+offset_bottom = 670.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=254998864]
 y_sort_enabled = true
+position = Vector2(-10, -169.99997)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_x0jl3")
 animation = &"idle_right"
 
-[node name="floor" type="CollisionShape2D" parent="."]
-position = Vector2(16, 230)
+[node name="floor" type="CollisionShape2D" parent="." unique_id=735013005]
+position = Vector2(6, -3.0517578e-05)
 shape = SubResource("CircleShape2D_3eadt")
 
-[node name="talkbox" type="Area2D" parent="."]
+[node name="talkbox" type="Area2D" parent="." unique_id=2065928881]
+position = Vector2(-10, -170)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox" unique_id=1533047035]
 shape = SubResource("CapsuleShape2D_3eadt")
 
-[node name="speechbubble" type="Marker2D" parent="."]
-position = Vector2(86, -214)
+[node name="speechbubble" type="Marker2D" parent="." unique_id=249257909]
+position = Vector2(76, -384.00006)
 
-[node name="magnet_range" type="Area2D" parent="."]
+[node name="magnet_range" type="Area2D" parent="." unique_id=1515923981]
+position = Vector2(-10, -170)
 script = ExtResource("6_h1q25")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet_range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet_range" unique_id=95445155]
 shape = SubResource("CircleShape2D_evndh")
 
 [connection signal="area_entered" from="talkbox" to="." method="_on_area_2d_area_entered"]

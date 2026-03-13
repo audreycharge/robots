@@ -1,29 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxkkuo1y5sok5"]
+[gd_scene format=3 uid="uid://dxkkuo1y5sok5"]
 
-[ext_resource type="Texture2D" uid="uid://c0ydhlrv23sgu" path="res://assets/spritesheet.png" id="1_ke356"]
+[ext_resource type="Texture2D" uid="uid://38hts1t2xwjq" path="res://assets/tilesheet2.png" id="2_3svof"]
 [ext_resource type="Script" uid="uid://dnkktsh1bs2uk" path="res://items/nuts.gd" id="2_blsld"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_blsld"]
-atlas = ExtResource("1_ke356")
-region = Rect2(1695, 1183, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfqhs"]
+atlas = ExtResource("2_3svof")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqew4"]
-atlas = ExtResource("1_ke356")
-region = Rect2(1696, 1248, 64, 64)
+atlas = ExtResource("2_3svof")
+region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3svof"]
-atlas = ExtResource("1_ke356")
-region = Rect2(1567, 1183, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5lf5"]
+atlas = ExtResource("2_3svof")
+region = Rect2(256, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfqhs"]
-atlas = ExtResource("1_ke356")
-region = Rect2(1631, 1183, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3skm"]
+atlas = ExtResource("2_3svof")
+region = Rect2(128, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pqew4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_blsld")
+"texture": SubResource("AtlasTexture_nfqhs")
 }],
 "loop": true,
 "name": &"circle",
@@ -39,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3svof")
+"texture": SubResource("AtlasTexture_a5lf5")
 }],
 "loop": true,
 "name": &"square",
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfqhs")
+"texture": SubResource("AtlasTexture_x3skm")
 }],
 "loop": true,
 "name": &"triangle",
@@ -59,17 +59,17 @@ radius = 35.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_blsld"]
 
-[node name="RigidBody2D" type="StaticBody2D"]
+[node name="RigidBody2D" type="StaticBody2D" unique_id=1558330242]
 script = ExtResource("2_blsld")
 
-[node name="nuts" type="AnimatedSprite2D" parent="."]
+[node name="nuts" type="AnimatedSprite2D" parent="." unique_id=2016992900]
 sprite_frames = SubResource("SpriteFrames_pqew4")
-animation = &"heart"
+animation = &"triangle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608755439]
 shape = SubResource("CircleShape2D_a5lf5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=229999040]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=733250743]
 shape = SubResource("CircleShape2D_blsld")

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://gmmalmd3agye"]
+
+[ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_do43o"]
+[ext_resource type="Texture2D" uid="uid://wdci0srxqx0d" path="res://assets/test_layout.png" id="1_u2rjs"]
+[ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="2_petwc"]
+[ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="3_6frrs"]
+
+[node name="sorting_room" type="Node2D" unique_id=1251005235]
+y_sort_enabled = true
+script = ExtResource("1_do43o")
+
+[node name="TestLayout" type="Sprite2D" parent="." unique_id=1487243673]
+position = Vector2(1281.7108, 886.4999)
+scale = Vector2(1.064, 1)
+texture = ExtResource("1_u2rjs")
+
+[node name="Area2D" type="StaticBody2D" parent="TestLayout" unique_id=1135027498]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TestLayout/Area2D" unique_id=415084571]
+polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.0742, -474.43344, 1218.3242, -159.24744, 1196.7075, 581.9775, 1197.6475, 705.2392, -1196.1638, 704.4119, -1198.0436, 572.8776, 1159.1133, 578.6684, 863.05884, 284.99115)
+
+[node name="TestLayout2" type="Sprite2D" parent="." unique_id=479632114]
+position = Vector2(222, 886.4998)
+rotation = 3.1415925
+scale = Vector2(1, -1)
+texture = ExtResource("1_u2rjs")
+
+[node name="Area2D" type="StaticBody2D" parent="TestLayout2" unique_id=1485429305]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TestLayout2/Area2D" unique_id=1980425408]
+polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.0742, -474.43344, 1218.3242, -159.24744, 1196.7075, 581.9775, 1197.6475, 705.2392, -1196.1638, 704.4119, -1198.0436, 572.8776, 1159.1133, 578.6684, 863.05884, 284.99115)
+
+[node name="EntranceMarkers" type="Node2D" parent="." unique_id=1329332031]
+
+[node name="hallway" type="Marker2D" parent="EntranceMarkers" unique_id=1318271212]
+position = Vector2(1959, 1305)
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1844765482]
+position = Vector2(1861, 919)
+texture = ExtResource("2_petwc")
+
+[node name="hallway" parent="." unique_id=1901776446 instance=ExtResource("3_6frrs")]
+position = Vector2(1876, 1172)
+rotation = 3.1415925
+scale = Vector2(1, -1)
+connected_scene = "hallway"

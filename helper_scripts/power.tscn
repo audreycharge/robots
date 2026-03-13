@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bysv0dmkuw1e1"]
+[gd_scene format=3 uid="uid://bysv0dmkuw1e1"]
 
 [ext_resource type="Script" uid="uid://dk7oqny5dy5q7" path="res://helper_scripts/power.gd" id="1_n2jeh"]
 
-[node name="Power" type="Node"]
+[node name="Power" type="Node" unique_id=712957883]
 script = ExtResource("1_n2jeh")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Timer" type="Timer" parent="." unique_id=1972045402]
 autostart = true
 ignore_time_scale = true
 

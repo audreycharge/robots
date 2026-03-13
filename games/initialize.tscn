@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://co30p7vknlsvj" path="res://assets/calibration/foot.png" id="5_47ypq"]
 [ext_resource type="Script" uid="uid://nsbvlk8lkmyk" path="res://games/calibrate.gd" id="7_7vj1e"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_7vj1e"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vlnj"]
 radius = 107.0
 
@@ -30,11 +28,6 @@ size = Vector2(96, 210)
 
 [node name="initialize" type="Node2D" unique_id=1163754654]
 script = ExtResource("1_mhrwy")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1742250018]
-offset_right = 1948.0
-offset_bottom = 1101.0
-texture = SubResource("CanvasTexture_7vj1e")
 
 [node name="Torso" type="Sprite2D" parent="." unique_id=1936378656]
 position = Vector2(928.25, 544.25)

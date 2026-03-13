@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dytrcouaood5j" path="res://assets/calibration/foot_calib.png" id="4_o8or5"]
 [ext_resource type="Texture2D" uid="uid://gfutjo26veer" path="res://assets/calibration/head_calib.png" id="5_k5fuw"]
 
-[sub_resource type="Texture2DRD" id="Texture2DRD_67iy0"]
-
 [sub_resource type="Animation" id="Animation_55xxn"]
 length = 0.001
 tracks/0/type = "value"
@@ -192,11 +190,6 @@ _data = {
 
 [node name="activate" type="Node2D" unique_id=1163754654]
 script = ExtResource("1_67iy0")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1742250018]
-offset_right = 1948.0
-offset_bottom = 1101.0
-texture = SubResource("Texture2DRD_67iy0")
 
 [node name="Leg" type="Sprite2D" parent="." unique_id=623876310]
 position = Vector2(928.25, 544.25)
