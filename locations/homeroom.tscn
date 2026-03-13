@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="3_4o3f6"]
 [ext_resource type="PackedScene" uid="uid://bv1vt0ocffs1h" path="res://characters/player.tscn" id="3_forvw"]
 [ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="4_bwylg"]
+[ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="5_02i8g"]
 [ext_resource type="PackedScene" uid="uid://bk2j01yuw6st5" path="res://characters/siren.tscn" id="6_jt03n"]
 
 [node name="homeroom" type="Node2D" unique_id=717916508]
@@ -37,6 +38,10 @@ texture = ExtResource("4_bwylg")
 
 [node name="Siren" parent="." unique_id=884103085 instance=ExtResource("6_jt03n")]
 position = Vector2(686, 1398)
+
+[node name="Cable" parent="." unique_id=642781843 instance=ExtResource("5_02i8g")]
+position = Vector2(1859.0001, 1388)
+bot_name = "Cable"
 
 [node name="Player" parent="." unique_id=232914426 instance=ExtResource("3_forvw")]
 unique_name_in_owner = true

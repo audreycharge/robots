@@ -1,0 +1,23 @@
+label Cable
+cable: You have work to do. You're already 3 months in.
+[signal arg="language"]
+[wait_input]
+if {response} == "good":
+	cable: Good.
+elif {} == "neutral":
+	cable: You are a magnetbot. We work hard and earn our keep.
+else:
+	cable: What kind of magnet bot would have claws? you want to be clawbot that bad? I'm sure there's another network out there to take you.
+[end_timeline]
+label Siren
+siren: I know you don't like your job.
+if {} == "good":
+	slnas
+elif {} == "neutral":
+else:
+[end_timeline]
+label Diode
+if {response} == "good":
+elif {response} == "neutral":
+else:
+[end_timeline]

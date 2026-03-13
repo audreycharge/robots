@@ -14,14 +14,68 @@ animations = [{
 "texture": SubResource("AtlasTexture_aq85r")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Cable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq85r")
+}],
+"loop": true,
+"name": &"Diode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq85r")
+}],
+"loop": true,
+"name": &"Haptor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq85r")
+}],
+"loop": true,
+"name": &"Siren",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq85r")
+}],
+"loop": true,
+"name": &"Trak",
 "speed": 5.0
 }]
 
-[node name="Basebot" type="Node2D" unique_id=2002004292]
+[sub_resource type="CircleShape2D" id="CircleShape2D_t20jn"]
+radius = 128.06248
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8pqc"]
+radius = 215.0
+height = 696.0
+
+[node name="Basebot" type="CharacterBody2D" unique_id=642781843 groups=["robot"]]
+y_sort_enabled = true
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_t20jn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=835314271]
 y_sort_enabled = true
 position = Vector2(-13.333313, -239.99988)
 sprite_frames = SubResource("SpriteFrames_651wn")
+animation = &"Siren"
+
+[node name="floor" type="CollisionShape2D" parent="." unique_id=889298794]
+position = Vector2(5.666687, 1.000061)
+shape = SubResource("CircleShape2D_t20jn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=379498009 groups=["robot"]]
+position = Vector2(-13.333313, -239.99988)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1591922572]
+position = Vector2(8, 0)
+shape = SubResource("CapsuleShape2D_u8pqc")

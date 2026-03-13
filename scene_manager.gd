@@ -10,6 +10,7 @@ var game_dir_path = "res://games/"
 @onready var power
 @onready var p_score = 0;
 @onready var n_score = 0;
+@onready var location
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +19,6 @@ func _ready() -> void:
 	power = preload("res://helper_scripts/power.tscn").instantiate()
 	add_child(temp)
 	add_child(power)
-	
 	power.depleted.connect(on_low_battery)
 	
 	
@@ -41,6 +41,7 @@ func go_to_minigame(from, to_scene_name: String) -> void:
 
 func change_scene(from, to_scene_name: String) -> void:
 	save_player(from)
+	location = to_scene_name
 	
 	var full_path = scene_dir_path + to_scene_name + ".tscn"
 	print_debug(full_path)

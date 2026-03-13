@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 var speed = 1.0
 const JUMP_VELOCITY = -400.0
-var dialoging;
+var dialoging = "";
 var interactable = false
 
 #@export var inventory: Inventory
@@ -56,7 +56,7 @@ func handleCollision():
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area.name)
+	print_debug(area.get_parent().name)
 	if area.get_parent().is_in_group("robot"):
 		get_node("Camera2D/HUD/talk").visible = true
 		interactable = true
@@ -67,8 +67,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and interactable:
 		interactable = false
-		if dialoging == "Siren":
-			var layout = Dialogic.start("timeline")
+		if dialoging != "":
+			print_debug(Dialogic.VAR.response)
+			print_debug(get_parent().name)
+			Dialogic.start(get_parent().name, dialoging)
+		
+func get_dialogue(location: String, context: String):
+	var layout = Dialogic.start(location, context)
 
 func updateAnimation():
 	var currSprite = _animated_sprite.animation;
