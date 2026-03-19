@@ -1,11 +1,21 @@
 {
 	"siren": {
-		"array": ["sin", "cos", "tan"]
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3
 	},
-	"phyter": {
-		"array": ["sin", "cos", "tan"]
+	"cable": {
+		"array": ["sin", "cos", "tan", "cos", "tan"]
 	},
-	"cylon": {
-		"array": ["sin", "cos", "tan"]
+	"diode": {
+		"array": ["sin", "cos", "tan", "cos", "tan"]
+	},
+	"haptor": {
+		"array": ["sin", "cos", "tan", "cos", "tan"]
+	},
+	"trak": {
+		"array": ["sin", "cos", "tan", "cos", "tan"]
+	},
+	"diode": {
+		"array": ["sin", "cos", "tan", "cos", "tan"]
 	},
 }

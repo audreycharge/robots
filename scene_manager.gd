@@ -5,6 +5,9 @@ var last_scene_name: String
 
 var scene_dir_path = "res://locations/"
 var game_dir_path = "res://games/"
+var ling_json = "res://games/ling.json"
+var response_codes: Dictionary = {}
+
 
 @onready var temp
 @onready var power
@@ -20,16 +23,41 @@ func _ready() -> void:
 	add_child(temp)
 	add_child(power)
 	power.depleted.connect(on_low_battery)
+	load_json_file()
+	#print_debug(response_codes.get("siren").array)
+	
 	
 	
 	pass # Replace with function body.
 
+func load_json_file():
+	#open file for reading
+	var file = FileAccess.open(ling_json, FileAccess.READ)
+	#check if file exists
+	assert(file.file_exists(ling_json), "File path does not exist")
+	
+	#read contents of the file as text
+	var json = file.get_as_text()
+	var json_object = JSON.new()
+		
+	#parse the json text
+	json_object.parse(json)
+	response_codes = json_object.data
+	
+	return response_codes;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	pass
 	
+func compare_codes(submitted, partner):
+	var correct = 0
+	var partner_array = response_codes.get(partner).array
+	for i in 5:
+		if submitted[i] == partner_array[i]:
+			correct+=1
+	return correct;
 func go_to_minigame(from, to_scene_name: String) -> void:
 	save_player(from)
 	

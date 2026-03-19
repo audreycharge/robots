@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="2_fh4tr"]
 [ext_resource type="PackedScene" uid="uid://bk2j01yuw6st5" path="res://characters/siren.tscn" id="3_cy64t"]
 [ext_resource type="PackedScene" uid="uid://bv1vt0ocffs1h" path="res://characters/player.tscn" id="4_iqtcl"]
+[ext_resource type="Script" uid="uid://n8f73sbmdeo5" path="res://characters/siren.gd" id="4_y2fgq"]
 
 [node name="start_room" type="Node2D" unique_id=491317263]
 
@@ -33,6 +34,7 @@ texture = ExtResource("2_fh4tr")
 
 [node name="Siren" parent="." unique_id=988852894 instance=ExtResource("3_cy64t")]
 position = Vector2(686, 1398)
+script = ExtResource("4_y2fgq")
 
 [node name="Player" parent="." unique_id=1018792434 instance=ExtResource("4_iqtcl")]
 unique_name_in_owner = true

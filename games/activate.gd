@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	print_debug("go to floor 1")
-	get_tree().call_deferred('change_scene_to_file', "res://locations/floor_1.tscn")
+	get_tree().call_deferred('change_scene_to_file', "res://locations/start_room.tscn")
 	pass # Replace with function body.

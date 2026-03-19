@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bv1vt0ocffs1h"]
 
 [ext_resource type="Script" uid="uid://dhny2whh580we" path="res://characters/player.gd" id="1_dnjla"]
+[ext_resource type="PackedScene" uid="uid://haw0e7nsyn5w" path="res://games/language.tscn" id="3_evndh"]
 [ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="3_tory2"]
 [ext_resource type="Texture2D" uid="uid://38hts1t2xwjq" path="res://assets/tilesheet2.png" id="4_evndh"]
 [ext_resource type="Script" uid="uid://c5no137e25ki5" path="res://characters/magnet_range.gd" id="6_h1q25"]
@@ -79,6 +80,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Language" parent="Camera2D" unique_id=1011672834 instance=ExtResource("3_evndh")]
+anchors_preset = 15
+offset_left = 9.999999
+offset_top = 739.9998
+offset_right = 9.999999
+offset_bottom = 739.9998
+scale = Vector2(1.2, 1.2)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=254998864]
 y_sort_enabled = true
 position = Vector2(-10, -169.99997)
@@ -107,5 +116,6 @@ script = ExtResource("6_h1q25")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="magnet_range" unique_id=95445155]
 shape = SubResource("CircleShape2D_evndh")
 
+[connection signal="submit_code" from="Camera2D/Language" to="." method="_on_language_submit_code"]
 [connection signal="area_entered" from="talkbox" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="talkbox" to="." method="_on_talkbox_area_exited"]

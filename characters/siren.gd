@@ -23,6 +23,7 @@ func _on_dialogic_signal(argument:String):
 		walk_to_scrap_pile()
 		print("Something was activated!")
 	elif argument == "calibrate":
-		Dialogic.start("calibration")
+		print_debug("calibrating time")
+		Dialogic.start("calibration");
 	elif argument == "siren_wall":
 		climb_wall()

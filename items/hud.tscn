@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cfbdriw43n1uj" path="res://items/hud.gd" id="1_7ynxm"]
 [ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="2_2v4x5"]
+[ext_resource type="Texture2D" uid="uid://bq2thk8g0qv86" path="res://assets/ui/overheat.png" id="3_2v4x5"]
 
 [node name="HUD" type="Control" unique_id=2048183109]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +64,7 @@ offset_bottom = 257.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 step = 1.0
-value = 7.91
+value = 8.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=366331415]
 layout_mode = 1
@@ -89,3 +91,8 @@ icon = ExtResource("2_2v4x5")
 [node name="settings" type="Button" parent="HBoxContainer" unique_id=181725923]
 layout_mode = 2
 icon = ExtResource("2_2v4x5")
+
+[node name="Overheating" type="Sprite2D" parent="." unique_id=1407208107]
+visible = false
+position = Vector2(984, 491)
+texture = ExtResource("3_2v4x5")

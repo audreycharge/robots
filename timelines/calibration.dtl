@@ -6,9 +6,6 @@ label overpowered (overpowered)
 siren: Too big! Too big! Lower it!
 [end_timeline]
 label lower (lower)
-siren: A large burst happens sometimes. Now see if you can climb this wall.
-[signal arg="siren_wall"]
-[end_timeline]
-label climb_wall (climb_wall)
-siren: Try increasing your output until you can carry your own weight.
+siren: A large burst happens sometimes. You need to be able to control it.
+[signal arg="overheat"]
 [end_timeline]

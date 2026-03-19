@@ -6,10 +6,13 @@ var speed = 1.0
 const JUMP_VELOCITY = -400.0
 var dialoging = "";
 var interactable = false
-
+@onready var language = $Camera2D/Language
 #@export var inventory: Inventory
 @onready var _animated_sprite = $AnimatedSprite2D
 
+func _ready() -> void:
+	#Dialogic.signal.connect(_on_dialogic_signal)
+	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -60,8 +63,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("robot"):
 		get_node("Camera2D/HUD/talk").visible = true
 		interactable = true
-		
 		dialoging = area.get_parent().name
+		
+	elif area.is_in_group("snoop"):
+		print_debug("you are snooping")
+		get_node("Camera2D/HUD/talk").visible = true
+		dialoging = "ceiling"
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:
@@ -71,6 +78,9 @@ func _input(event: InputEvent) -> void:
 			print_debug(Dialogic.VAR.response)
 			print_debug(get_parent().name)
 			Dialogic.start(get_parent().name, dialoging)
+	elif event.is_action_pressed("interact"):
+		if dialoging == "ceiling":
+			Dialogic.start(get_parent().name, dialoging);
 		
 func get_dialogue(location: String, context: String):
 	var layout = Dialogic.start(location, context)
@@ -103,9 +113,20 @@ func updateAnimation():
 	_animated_sprite.play(spriteString)
 	
 
+func _on_dialogic_signal(argument: String):
+	print_debug("you pass out");
+	scene_manager.change_scene(get_owner(), "homeroom")
 
 func _on_talkbox_area_exited(area: Area2D) -> void:
 	get_node("Camera2D/HUD/talk").visible = false
 	interactable = false
 	dialoging = null
+	pass # Replace with function body.
+
+
+func _on_language_submit_code(code) -> void:
+	print(code)
+	# do some code checking with the convo partner
+	var correct = scene_manager.compare_codes(code, "siren");
+	print_debug(str("you got ", correct, " correct"))
 	pass # Replace with function body.

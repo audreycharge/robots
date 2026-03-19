@@ -31,6 +31,7 @@ directories/dch_directory={
 "cylon": "res://timelines/cylon.dch",
 "diode": "res://timelines/diode.dch",
 "green": "res://timelines/green.dch",
+"haptor": "res://timelines/haptor.dch",
 "phyter": "res://timelines/phyter.dch",
 "siren": "res://timelines/siren.dch"
 }
@@ -40,7 +41,9 @@ directories/dtl_directory={
 "f2_1": "res://timelines/f2_1.dtl",
 "f2_connect": "res://timelines/f2_connect.dtl",
 "f2_fun": "res://timelines/f2_fun.dtl",
+"hallway": "res://timelines/hallway.dtl",
 "homeroom": "res://timelines/homeroom.dtl",
+"sorting_room": "res://timelines/sorting_room.dtl",
 "start_room": "res://timelines/start_room.dtl"
 }
 layout/style_directory={}
@@ -64,6 +67,8 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 [global_group]
 
 robot=""
+magnetic="objects that green can pick up"
+snoop=""
 
 [input]
 

@@ -1,0 +1,13 @@
+label ceiling
+Their conversation is too muffled for you to hear. You can make out "...join Sowat's network...all claw..."
+[end_timeline]
+label group_a
+Hey Green! How's the new job?
+green: <Empty Text Event>
+[end_timeline]
+label group_b
+[end_timeline]
+label group_c
+...so smug! You should've seen how Green shrugged me off.
+I need Haptor to stop comparing us, like I need to be reminded...
+[end_timeline]

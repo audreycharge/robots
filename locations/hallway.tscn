@@ -6,12 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="3_bgp74"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="4_dgtn4"]
 [ext_resource type="Texture2D" uid="uid://dtet6n45n4pfn" path="res://assets/frontdoor.png" id="5_0vc41"]
+[ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="7_2w4lw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2seor"]
 size = Vector2(1730, 761)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgp74"]
 size = Vector2(1730, 231.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w4lw"]
+size = Vector2(611.6668, 1483.333)
 
 [node name="hallway" type="Node2D" unique_id=1892908119]
 y_sort_enabled = true
@@ -50,7 +54,7 @@ position = Vector2(-39, 577.25)
 shape = SubResource("RectangleShape2D_bgp74")
 
 [node name="Door" type="Sprite2D" parent="." unique_id=580815033]
-position = Vector2(-2939, 6)
+position = Vector2(-3411, 30)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_bgp74")
 
@@ -86,3 +90,22 @@ position = Vector2(615, 452)
 rotation = 3.1415925
 scale = Vector2(1, -1)
 connected_scene = "sorting_room"
+
+[node name="ceiling" parent="." unique_id=642781843 instance=ExtResource("7_2w4lw")]
+z_index = 1
+position = Vector2(-2262, -494)
+rotation = 3.1415927
+
+[node name="ceiling 2" parent="." unique_id=2067057730 instance=ExtResource("7_2w4lw")]
+z_index = 1
+position = Vector2(-2054, -462)
+rotation = 3.1415927
+scale = Vector2(-0.6, 0.6)
+
+[node name="overheard" type="Area2D" parent="." unique_id=1059033032 groups=["snoop"]]
+position = Vector2(-2054, -462)
+scale = Vector2(0.6, -0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="overheard" unique_id=917303378]
+position = Vector2(-175.83325, -731.6668)
+shape = SubResource("RectangleShape2D_2w4lw")
