@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="5_02i8g"]
 [ext_resource type="PackedScene" uid="uid://bk2j01yuw6st5" path="res://characters/siren.tscn" id="6_jt03n"]
 
+[sub_resource type="Gradient" id="Gradient_02i8g"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2lrbo"]
+gradient = SubResource("Gradient_02i8g")
+
 [node name="homeroom" type="Node2D" unique_id=717916508]
 y_sort_enabled = true
 script = ExtResource("1_v5vuv")
@@ -56,3 +61,8 @@ connected_scene = "hallway"
 
 [node name="hallway" type="Marker2D" parent="EntranceMarkers" unique_id=1275377211]
 position = Vector2(2121, 1375)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=435361564]
+position = Vector2(1317.5, 1035)
+scale = Vector2(42.171875, 28.343746)
+texture = SubResource("GradientTexture2D_2lrbo")

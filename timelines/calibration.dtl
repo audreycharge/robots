@@ -1,4 +1,5 @@
 siren: Starting calibration tests\:
+[signal arg="overheat"]
 siren: Pick up any metal with your magnets.
 [signal arg="calibrate_magnet"]
 [end_timeline]

@@ -17,8 +17,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_um1vd"]
-radius = 128.06248
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um1vd"]
+radius = 63.99994
+height = 291.33337
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er5n6"]
 radius = 215.0
@@ -34,9 +35,11 @@ y_sort_enabled = true
 position = Vector2(-13.333313, -239.99988)
 sprite_frames = SubResource("SpriteFrames_ybuc7")
 
-[node name="floor" type="CollisionShape2D" parent="." unique_id=730318635]
-position = Vector2(5.666687, 1.000061)
-shape = SubResource("CircleShape2D_um1vd")
+[node name="floor" type="CollisionShape2D" parent="." unique_id=865482455]
+y_sort_enabled = true
+position = Vector2(5.666687, 41.000057)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_um1vd")
 
 [node name="siren" type="Area2D" parent="." unique_id=1954208510]
 position = Vector2(-13.333313, -239.99988)

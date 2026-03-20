@@ -11,7 +11,7 @@ var interactable = false
 @onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
-	#Dialogic.signal.connect(_on_dialogic_signal)
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -114,8 +114,12 @@ func updateAnimation():
 	
 
 func _on_dialogic_signal(argument: String):
-	print_debug("you pass out");
-	scene_manager.change_scene(get_owner(), "homeroom")
+	if (argument == "respond"):
+		language.visible = true;
+	elif (argument == "overheat"):
+		print_debug("you pass out");
+		print_debug(get_parent())
+		scene_manager.change_scene(get_parent(), "homeroom")
 
 func _on_talkbox_area_exited(area: Area2D) -> void:
 	get_node("Camera2D/HUD/talk").visible = false
@@ -126,7 +130,9 @@ func _on_talkbox_area_exited(area: Area2D) -> void:
 
 func _on_language_submit_code(code) -> void:
 	print(code)
+	language.visible = false
 	# do some code checking with the convo partner
 	var correct = scene_manager.compare_codes(code, "siren");
 	print_debug(str("you got ", correct, " correct"))
+	Dialogic.start(get_parent().name, "start_again")
 	pass # Replace with function body.

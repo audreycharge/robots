@@ -4,6 +4,9 @@ siren: Can you tell me your ID number?
 green: GN-354
 siren: Hello GN-354! I'm SN-274, your direct supervisor and network mate.
 siren: You may call me Siren.
+[signal arg="respond"]
+[end_timeline]
+label start_again
 green: ...
 siren: Don't be shy!
 siren: Let's start with some calibration tests. I'm sure your knowledge base has already supplied you-
