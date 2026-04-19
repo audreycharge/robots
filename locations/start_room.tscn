@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bk2j01yuw6st5" path="res://characters/siren.tscn" id="3_cy64t"]
 [ext_resource type="PackedScene" uid="uid://bv1vt0ocffs1h" path="res://characters/player.tscn" id="4_iqtcl"]
 [ext_resource type="Script" uid="uid://n8f73sbmdeo5" path="res://characters/siren.gd" id="4_y2fgq"]
+[ext_resource type="PackedScene" uid="uid://bq86t0wf5o14p" path="res://items/junk.tscn" id="7_0dp22"]
 
 [node name="start_room" type="Node2D" unique_id=491317263]
 y_sort_enabled = true
@@ -48,3 +49,12 @@ position = Vector2(1251.0001, 1379)
 
 [node name="hallway" type="Marker2D" parent="EntranceMarkers" unique_id=1995458591]
 position = Vector2(2121, 1375)
+
+[node name="junk" parent="." unique_id=989283492 instance=ExtResource("7_0dp22")]
+position = Vector2(1964, 1383)
+
+[node name="junk3" parent="." unique_id=723844103 instance=ExtResource("7_0dp22")]
+position = Vector2(1804, 1499)
+
+[node name="junk2" parent="." unique_id=802691755 instance=ExtResource("7_0dp22")]
+position = Vector2(1957, 1478)

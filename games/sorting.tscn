@@ -1,16 +1,49 @@
 [gd_scene format=3 uid="uid://cnwxifc1xepqb"]
 
-[ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="1_fuicm"]
 [ext_resource type="Script" uid="uid://bohpw0am63vbw" path="res://games/sorting.gd" id="1_ookni"]
 [ext_resource type="PackedScene" uid="uid://bjunwl3cw0srj" path="res://items/hud.tscn" id="2_ix0er"]
+[ext_resource type="Texture2D" uid="uid://c68s7iis7f73g" path="res://assets/belt.png" id="2_mh1tq"]
 [ext_resource type="Script" uid="uid://c1tujeslpsamh" path="res://games/magnet.gd" id="2_v33c3"]
 [ext_resource type="Script" uid="uid://chhl6r02nefpn" path="res://games/items.gd" id="3_v33c3"]
 [ext_resource type="PackedScene" uid="uid://dxkkuo1y5sok5" path="res://items/nuts.tscn" id="4_3k1b5"]
+[ext_resource type="Texture2D" uid="uid://vra8glhj1gxw" path="res://tilesheet.png" id="4_mh1tq"]
+[ext_resource type="PackedScene" uid="uid://yqbak7au0oed" path="res://items/scraps.tscn" id="6_r6485"]
+[ext_resource type="Texture2D" uid="uid://dv0pmslvfrcxq" path="res://assets/bits/1.png" id="9_5d3h8"]
+[ext_resource type="Texture2D" uid="uid://cvqv53tqxwta8" path="res://assets/bits/0.png" id="10_yiqcs"]
+[ext_resource type="Texture2D" uid="uid://pfrvsw4mmeki" path="res://assets/bits/4.png" id="11_d0pu4"]
+[ext_resource type="Texture2D" uid="uid://lth2imokdkht" path="res://assets/bits/2.png" id="12_g7c6i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jv5i6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv5i6"]
 size = Vector2(0.9972899, 1.0071943)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8rqc"]
+atlas = ExtResource("4_mh1tq")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hu4r"]
+atlas = ExtResource("4_mh1tq")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pun08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8rqc")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hu4r")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v33c3"]
 size = Vector2(130, 126)
@@ -21,9 +54,25 @@ size = Vector2(128, 126)
 [node name="sorting" type="Node2D" unique_id=247574535]
 script = ExtResource("1_ookni")
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=804202991]
+scale = Vector2(2275.96, 452.589)
+scroll_offset = Vector2(-2860, 0)
+repeat_size = Vector2(2480, 0)
+autoscroll = Vector2(-300, 0)
+repeat_times = 3
+
+[node name="Belt" type="Sprite2D" parent="Parallax2D" unique_id=1012767048]
+texture_repeat = 2
+position = Vector2(-0.31678927, -0.3910833)
+scale = Vector2(0.00043994724, 0.0018269379)
+texture = ExtResource("2_mh1tq")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 5760, 1080)
+
 [node name="box" type="MeshInstance2D" parent="." unique_id=679443805]
-position = Vector2(991, 823)
-scale = Vector2(738, 417.00006)
+position = Vector2(991, 837.25006)
+scale = Vector2(738, 388.49997)
 mesh = SubResource("BoxMesh_jv5i6")
 
 [node name="Area2D" type="Area2D" parent="box" unique_id=1431667775]
@@ -33,22 +82,26 @@ scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_jv5i6")
 
 [node name="magnet" type="CharacterBody2D" parent="." unique_id=967043556]
+collision_layer = 2
 script = ExtResource("2_v33c3")
 
-[node name="Icon" type="Sprite2D" parent="magnet" unique_id=1918480031]
-texture = ExtResource("1_fuicm")
+[node name="Icon" type="AnimatedSprite2D" parent="magnet" unique_id=1397485233]
+sprite_frames = SubResource("SpriteFrames_pun08")
+animation = &"on"
+autoplay = "off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="magnet" unique_id=1268275754]
 shape = SubResource("RectangleShape2D_v33c3")
 
-[node name="Area2D" type="Area2D" parent="magnet" unique_id=1000523687]
+[node name="magnet_area" type="Area2D" parent="magnet" unique_id=1000523687]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet/Area2D" unique_id=2084989052]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="magnet/magnet_area" unique_id=2084989052]
 shape = SubResource("RectangleShape2D_fuicm")
 
 [node name="items" type="Node" parent="." unique_id=1222495769]
 script = ExtResource("3_v33c3")
 nut = ExtResource("4_3k1b5")
+scrap = ExtResource("6_r6485")
 
 [node name="HUD" parent="." unique_id=607597078 instance=ExtResource("2_ix0er")]
 anchors_preset = 0
@@ -63,5 +116,77 @@ grow_vertical = 1
 wait_time = 5.0
 autostart = true
 
+[node name="work" type="Timer" parent="." unique_id=1628812511]
+wait_time = 60.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1371707711]
+offset_left = 37.0
+offset_top = 718.0
+offset_right = 516.0
+offset_bottom = 996.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=757883282]
+layout_mode = 0
+offset_right = 531.0
+offset_bottom = 256.0
+theme_override_constants/separation = 84
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=821723889]
+layout_mode = 2
+
+[node name="nail" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=2133014094]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/nail" unique_id=1484624074]
+layout_mode = 2
+texture = ExtResource("9_5d3h8")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/nail" unique_id=1036354841]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0/10"
+
+[node name="hexnut" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=232542898]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/hexnut" unique_id=1211949984]
+layout_mode = 2
+texture = ExtResource("10_yiqcs")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/hexnut" unique_id=1951752111]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0/10"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=436155926]
+layout_mode = 2
+
+[node name="washer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=630717979]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2/washer" unique_id=1432063053]
+layout_mode = 2
+texture = ExtResource("11_d0pu4")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer2/washer" unique_id=1042895795]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0/10"
+
+[node name="can" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=1430003305]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2/can" unique_id=752587745]
+layout_mode = 2
+texture = ExtResource("12_g7c6i")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer2/can" unique_id=226075377]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0/10"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=574954862]
+
 [connection signal="input_event" from="box/Area2D" to="magnet" method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="magnet/magnet_area" to="magnet" method="_on_magnet_area_area_entered"]
 [connection signal="timeout" from="Glitch" to="magnet" method="_on_glitch_timeout"]

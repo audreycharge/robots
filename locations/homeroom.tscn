@@ -6,18 +6,32 @@
 [ext_resource type="PackedScene" uid="uid://bv1vt0ocffs1h" path="res://characters/player.tscn" id="3_forvw"]
 [ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="4_bwylg"]
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="5_02i8g"]
-[ext_resource type="PackedScene" uid="uid://bk2j01yuw6st5" path="res://characters/siren.tscn" id="6_jt03n"]
+[ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="8_1b4st"]
+[ext_resource type="PackedScene" uid="uid://bj25wfwi7emxf" path="res://helper_scripts/charger.tscn" id="8_2lrbo"]
 
 [sub_resource type="Gradient" id="Gradient_02i8g"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2lrbo"]
 gradient = SubResource("Gradient_02i8g")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lrbo"]
+size = Vector2(110, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1b4st"]
+size = Vector2(251.25, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx66l"]
+size = Vector2(253.74976, 182.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lrbo"]
+radius = 43.365353
+
 [node name="homeroom" type="Node2D" unique_id=717916508]
 y_sort_enabled = true
 script = ExtResource("1_v5vuv")
 
 [node name="TestLayout" type="Sprite2D" parent="." unique_id=68746766]
+z_index = -2
 position = Vector2(1281.7108, 886.4999)
 scale = Vector2(1.0639937, 1.20881)
 texture = ExtResource("1_bisa2")
@@ -28,6 +42,7 @@ texture = ExtResource("1_bisa2")
 polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.0742, -474.43344, 1218.3242, -159.24744, 1196.7075, 581.9775, 1197.6475, 705.2392, -1196.1638, 704.4119, -1198.0436, 572.8776, 1159.1133, 578.6684, 863.05884, 284.99115)
 
 [node name="TestLayout2" type="Sprite2D" parent="." unique_id=1789823186]
+z_index = -2
 position = Vector2(1193.7108, 886.4999)
 scale = Vector2(-1, 1.209)
 texture = ExtResource("1_bisa2")
@@ -41,12 +56,16 @@ polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.07
 position = Vector2(2340, 1134)
 texture = ExtResource("4_bwylg")
 
-[node name="Siren" parent="." unique_id=884103085 instance=ExtResource("6_jt03n")]
-position = Vector2(686, 1398)
-
 [node name="Cable" parent="." unique_id=642781843 instance=ExtResource("5_02i8g")]
-position = Vector2(1859.0001, 1388)
+position = Vector2(2399, 1567)
+scale = Vector2(-0.8, 0.8)
 bot_name = "Cable"
+talk = true
+
+[node name="Siren" parent="." unique_id=1738346345 instance=ExtResource("5_02i8g")]
+position = Vector2(203.00002, 1561)
+bot_name = "Siren"
+talk = true
 
 [node name="Player" parent="." unique_id=232914426 instance=ExtResource("3_forvw")]
 unique_name_in_owner = true
@@ -63,6 +82,108 @@ connected_scene = "hallway"
 position = Vector2(2121, 1375)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=435361564]
+visible = false
 position = Vector2(1317.5, 1035)
 scale = Vector2(42.171875, 28.343746)
 texture = SubResource("GradientTexture2D_2lrbo")
+
+[node name="Charger" parent="." unique_id=377685486 instance=ExtResource("8_2lrbo")]
+z_index = -1
+position = Vector2(1065, 1457)
+
+[node name="Diode" parent="." unique_id=1196514448 instance=ExtResource("5_02i8g")]
+position = Vector2(1577, 1299)
+bot_name = "Diode"
+talk = true
+
+[node name="PhotoFrame" type="Sprite2D" parent="." unique_id=1669875855 groups=["item"]]
+position = Vector2(932, 998)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(655, 36, 99, 80)
+
+[node name="Area2D" type="Area2D" parent="PhotoFrame" unique_id=994671488]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoFrame/Area2D" unique_id=215951367]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_2lrbo")
+
+[node name="Dried Flower" type="Sprite2D" parent="." unique_id=867678426 groups=["item"]]
+position = Vector2(733, 907)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(538, 32, 93, 93)
+
+[node name="Area2D" type="Area2D" parent="Dried Flower" unique_id=1597573247]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dried Flower/Area2D" unique_id=889505465]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_2lrbo")
+
+[node name="Mirror" type="Sprite2D" parent="." unique_id=1494728472 groups=["item"]]
+position = Vector2(1966, 1030)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(1039, 138, 237, 368)
+
+[node name="Area2D" type="Area2D" parent="Mirror" unique_id=808331659]
+position = Vector2(0.00015258788, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Area2D" unique_id=262424292]
+position = Vector2(-1.875, 0)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_1b4st")
+
+[node name="Scrap Pile" type="Sprite2D" parent="." unique_id=1385284082 groups=["item"]]
+position = Vector2(501, 1193)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(522, 337, 235, 168)
+
+[node name="Area2D" type="Area2D" parent="Scrap Pile" unique_id=2007375036]
+position = Vector2(0.00015258788, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrap Pile/Area2D" unique_id=1268343506]
+position = Vector2(-1.875, 0)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_hx66l")
+
+[node name="shelf" type="Sprite2D" parent="." unique_id=1904665239]
+position = Vector2(727.00037, 970)
+rotation = 3.1415925
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(646, 229, 122, 23)
+
+[node name="shelf2" type="Sprite2D" parent="." unique_id=1508296910]
+position = Vector2(1105, 1126.0001)
+rotation = 3.1415925
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(646, 229, 122, 23)
+
+[node name="shelf3" type="Sprite2D" parent="." unique_id=1214595542]
+position = Vector2(927, 1049)
+rotation = 3.1415925
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(646, 229, 122, 23)
+
+[node name="Horse Toy" type="Sprite2D" parent="." unique_id=725819018 groups=["item"]]
+position = Vector2(1114, 1082)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1b4st")
+region_enabled = true
+region_rect = Rect2(542, 199, 74, 53)
+
+[node name="Area2D" type="Area2D" parent="Horse Toy" unique_id=1763456583]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Horse Toy/Area2D" unique_id=1520362003]
+shape = SubResource("CircleShape2D_2lrbo")

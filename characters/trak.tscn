@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dopck3q7np8br"]
+
+[ext_resource type="Script" uid="uid://bkydnxris6bbr" path="res://characters/trak.gd" id="1_0vew8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnnv8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vew8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vew8"]
+radius = 63.99994
+height = 291.33337
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7jx6"]
+
+[node name="trak" type="CharacterBody2D" unique_id=1854347309]
+script = ExtResource("1_0vew8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1011977907]
+shape = SubResource("CircleShape2D_pnnv8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=208007722 groups=["robot"]]
+sprite_frames = SubResource("SpriteFrames_0vew8")
+
+[node name="floor" type="CollisionShape2D" parent="." unique_id=1758225470]
+y_sort_enabled = true
+position = Vector2(5.666687, 41.000057)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0vew8")
+
+[node name="talkbox" type="Area2D" parent="." unique_id=1871419790]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox" unique_id=294508179]
+shape = SubResource("CircleShape2D_y7jx6")

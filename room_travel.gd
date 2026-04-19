@@ -5,7 +5,7 @@ extends BaseScene
 func _ready() -> void:
 	#print_debug("room2")
 	super()
-	print_debug(player.global_position)
+	#print_debug(player.global_position)
 	pass # Replace with function body.
 
 

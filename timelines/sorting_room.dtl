@@ -1,0 +1,50 @@
+label Haptor
+if {haptor} == true:
+	haptor: Get back to work, or I'll replace you with a washer.
+else:
+	haptor: Why aren't you sorting the materials?
+	[signal arg="respond"]
+[end_timeline]
+label Haptor_response
+set {haptor} = true
+if {response} == "right":
+elif {response} == "neutral":
+else:
+[end_timeline]
+label Trak
+if {trak} == true:
+else:
+	[signal arg="respond"]
+[end_timeline]
+label Trak_response
+if {response} == "right":
+elif {response} == "neutral":
+else:
+set {trak} = true
+[end_timeline]
+label Talik
+if {talik} == true:
+else:
+	[signal arg="respond"]
+[end_timeline]
+label Talik_response
+if {response} == "right":
+elif {response} == "neutral":
+else:
+set {talik} = true
+[end_timeline]
+label Beam
+if {beam} == true:
+else:
+	[signal arg="respond"]
+[end_timeline]
+label Beam_response
+if {response} == "right":
+	beam right
+elif {response} == "neutral":
+else:
+set {beam} = true
+[end_timeline]
+label work
+haptor: WORK! NOW!
+[end_timeline]

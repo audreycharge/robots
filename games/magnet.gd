@@ -7,6 +7,7 @@ var magnetized = false
 var rand_size
 
 
+
 func _init() -> void:
 	og_scale = scale
 
@@ -17,24 +18,43 @@ func _process(delta):
 	if size < 0.5:
 		size = 0.5
 	
-	scale = og_scale * (1 + size/2)
+	scale = og_scale * (1 + size)
 	#print_debug(scene_manager.temp.temp)
+	#print(float(60 - scene_manager.temp.temp)/24 * 5)
+	$"../Glitch".wait_time = round(float(60 - scene_manager.temp.temp)/24 * 5);
+	#$"../Glitch".start()
 	
 	if magnetized == true:
-		var bodies = get_child(2).get_overlapping_bodies()
+		var bodies = get_child(2).get_overlapping_areas()
 		for i in (size*2):
-			if i < get_child(2).get_overlapping_bodies().size():
-				if bodies[i].name != "magnet":
-					#print(bodies[i].name)
-					bodies[i].position += vec
+			if i < get_child(2).get_overlapping_areas().size():
+				if bodies[i].get_parent().is_in_group("magnetic"):
+					#print(bodies[i].get_parent().name)
+					bodies[i].get_parent().position += vec
+					bodies[i].get_parent().attracted = true;
+	else:
+		var bodies = get_child(2).get_overlapping_areas()
+		for b in bodies:
+			if b.get_parent().is_in_group("magnetic"):
+				b.get_parent().attracted = false;
 	
 func _input(event):
-	if event.is_action_pressed("up")  and size < 3:
+	if event.is_action_pressed("load_up")  and size < 3:
 		size = size + 0.5
-	if event.is_action_pressed("down") and size > 1:
+	if event.is_action_pressed("load_down") and size > 1:
 		size = size - 0.5
-	if event is InputEventMouseButton and event.is_pressed():
+	if (event is InputEventMouseButton and event.is_pressed()) or event.is_action_pressed("magnetize"):
 		magnetized = !magnetized
+		if magnetized:
+			$Icon.animation = "on"
+			print_debug("magnet on")
+			scene_manager.temp.get_node("heatup").start()
+			scene_manager.temp.cooldown = false;
+		else:
+			$Icon.animation = "off"
+			print_debug("magnet off")
+			scene_manager.temp.get_node("heatup").stop()
+			scene_manager.temp.init_cooldown()
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -45,5 +65,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func _on_glitch_timeout() -> void:
 	rand_size = randi()% 6 / 2
+	print($"../Glitch".wait_time)
 	size = rand_size
+	pass # Replace with function body.
+
+
+func _on_magnet_area_area_entered(area: Area2D) -> void:
+	#print_debug(area.get_parent().name)
 	pass # Replace with function body.

@@ -2,26 +2,39 @@
 
 [ext_resource type="Texture2D" uid="uid://dt0gk7cqgwjnh" path="res://assets/hallend.png" id="1_2seor"]
 [ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_ijndg"]
-[ext_resource type="Texture2D" uid="uid://bhf0lrm1dqu6n" path="res://assets/hallmid.png" id="2_bgp74"]
 [ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="3_bgp74"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="4_dgtn4"]
 [ext_resource type="Texture2D" uid="uid://dtet6n45n4pfn" path="res://assets/frontdoor.png" id="5_0vc41"]
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="7_2w4lw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2seor"]
-size = Vector2(1730, 761)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgp74"]
-size = Vector2(1730, 231.5)
+[ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="7_8mmyn"]
+[ext_resource type="Texture2D" uid="uid://b7xuq515ob52w" path="res://assets/rustdoor.png" id="8_8mmyn"]
+[ext_resource type="Texture2D" uid="uid://87ohnxsa6sw0" path="res://assets/elevator.png" id="9_l7oox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w4lw"]
-size = Vector2(611.6668, 1483.333)
+size = Vector2(808.33344, 1239.1665)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vc41"]
+size = Vector2(740, 739)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7oox"]
+size = Vector2(471, 572)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mmyn"]
+radius = 68.75
+height = 370.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mmyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikm1t"]
+size = Vector2(468, 540)
 
 [node name="hallway" type="Node2D" unique_id=1892908119]
 y_sort_enabled = true
 script = ExtResource("1_ijndg")
 
 [node name="Hallright" type="Sprite2D" parent="." unique_id=208531435]
+position = Vector2(212.05762, -229.57898)
+scale = Vector2(1.7968204, 1.7968204)
 texture = ExtResource("1_2seor")
 
 [node name="Area2D" type="StaticBody2D" parent="Hallright" unique_id=280574897]
@@ -30,8 +43,8 @@ texture = ExtResource("1_2seor")
 polygon = PackedVector2Array(-906, 279, -900.1095, -474.43344, 894.0742, -474.43344, 1104, -284, 1109, 705, -1089, 706, -902, 461, 1050, 463, 863.05884, 284.99115)
 
 [node name="Hallleft" type="Sprite2D" parent="." unique_id=789354812]
-position = Vector2(-2976, 0)
-scale = Vector2(-1, 1)
+position = Vector2(-2763.9424, -229.57898)
+scale = Vector2(-1.7968204, 1.7968204)
 texture = ExtResource("1_2seor")
 
 [node name="Area2D" type="StaticBody2D" parent="Hallleft" unique_id=1301036910]
@@ -39,73 +52,142 @@ texture = ExtResource("1_2seor")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hallleft/Area2D" unique_id=271577294]
 polygon = PackedVector2Array(-906, 279, -900.1095, -474.43344, 894.0742, -474.43344, 1104, -284, 1109, 705, -1089, 706, -902, 461, 1050, 463, 863.05884, 284.99115)
 
-[node name="Hallmid" type="Sprite2D" parent="." unique_id=332262355]
-position = Vector2(-1659, 0)
-texture = ExtResource("2_bgp74")
-
-[node name="Area2D" type="StaticBody2D" parent="Hallmid" unique_id=1887987936]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallmid/Area2D" unique_id=1283090194]
-position = Vector2(-39, -101.5)
-shape = SubResource("RectangleShape2D_2seor")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallmid/Area2D" unique_id=1905310039]
-position = Vector2(-39, 577.25)
-shape = SubResource("RectangleShape2D_bgp74")
-
 [node name="Door" type="Sprite2D" parent="." unique_id=580815033]
-position = Vector2(-3411, 30)
+position = Vector2(-1835.5, 33.5)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_bgp74")
 
 [node name="sort_entrance" type="Sprite2D" parent="." unique_id=2107782238]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(606, 388)
+position = Vector2(655, 538)
 texture = ExtResource("5_0vc41")
 offset = Vector2(0, -200)
 
 [node name="EntranceMarkers" type="Node2D" parent="." unique_id=1511272359]
 
 [node name="homeroom" type="Marker2D" parent="EntranceMarkers" unique_id=626689557]
-position = Vector2(-3121, 320)
+position = Vector2(-1820, 411)
 
 [node name="sorting_room" type="Marker2D" parent="EntranceMarkers" unique_id=367245150]
+position = Vector2(661, 409)
 
 [node name="init_room" type="Marker2D" parent="EntranceMarkers" unique_id=880657337]
+position = Vector2(280, -40)
 
 [node name="init_room2" type="Marker2D" parent="EntranceMarkers" unique_id=1549053967]
 
 [node name="elevator" type="Marker2D" parent="EntranceMarkers" unique_id=446651900]
-position = Vector2(-1459, 288)
+position = Vector2(-3497, 398)
 
 [node name="homeroom" parent="." unique_id=1901776446 instance=ExtResource("4_dgtn4")]
-position = Vector2(-3428, 283)
+position = Vector2(-1852.5, 286.5)
 rotation = 3.1415925
 scale = Vector2(1, -1)
 connected_scene = "homeroom"
 
 [node name="sorting_room" parent="." unique_id=1934322074 instance=ExtResource("4_dgtn4")]
-position = Vector2(615, 452)
+position = Vector2(664, 585)
 rotation = 3.1415925
 scale = Vector2(1, -1)
 connected_scene = "sorting_room"
 
-[node name="ceiling" parent="." unique_id=642781843 instance=ExtResource("7_2w4lw")]
-z_index = 1
-position = Vector2(-2262, -494)
-rotation = 3.1415927
-
-[node name="ceiling 2" parent="." unique_id=2067057730 instance=ExtResource("7_2w4lw")]
-z_index = 1
-position = Vector2(-2054, -462)
-rotation = 3.1415927
-scale = Vector2(-0.6, 0.6)
-
 [node name="overheard" type="Area2D" parent="." unique_id=1059033032 groups=["snoop"]]
-position = Vector2(-2054, -462)
+position = Vector2(-998, -462.00003)
 scale = Vector2(0.6, -0.6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="overheard" unique_id=917303378]
-position = Vector2(-175.83325, -731.6668)
+position = Vector2(-123.333374, -612.08344)
 shape = SubResource("RectangleShape2D_2w4lw")
+debug_color = Color(0, 0.6, 0.69803923, 0.7058824)
+
+[node name="ceiling" parent="overheard" unique_id=642781843 instance=ExtResource("7_2w4lw")]
+z_index = 1
+position = Vector2(-291.66675, 186.66656)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="ceiling 2" parent="overheard" unique_id=2067057730 instance=ExtResource("7_2w4lw")]
+z_index = 1
+position = Vector2(55, 133.33325)
+rotation = 3.1415925
+scale = Vector2(1.3333334, -1.3333334)
+
+[node name="Puck" parent="." unique_id=1180282840 instance=ExtResource("7_2w4lw")]
+position = Vector2(984, 578)
+bot_name = "Puck"
+talk = true
+
+[node name="group_b" type="Area2D" parent="." unique_id=1887603486 groups=["robot"]]
+y_sort_enabled = true
+position = Vector2(-2457, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="group_b" unique_id=1925354708]
+shape = SubResource("RectangleShape2D_0vc41")
+
+[node name="Basebot4" parent="group_b" unique_id=1099762537 instance=ExtResource("7_2w4lw")]
+position = Vector2(45, 178)
+
+[node name="Basebot" parent="group_b" unique_id=154718622 instance=ExtResource("7_2w4lw")]
+position = Vector2(-125, 170)
+
+[node name="group_a" type="Area2D" parent="." unique_id=2085888286 groups=["robot"]]
+y_sort_enabled = true
+position = Vector2(-4279, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="group_a" unique_id=1122339025]
+position = Vector2(-67, 235.5)
+shape = SubResource("RectangleShape2D_0vc41")
+
+[node name="Basebot5" parent="group_a" unique_id=533751750 instance=ExtResource("7_2w4lw")]
+position = Vector2(-19, 463.00003)
+
+[node name="Basebot2" parent="group_a" unique_id=1656157866 instance=ExtResource("7_2w4lw")]
+position = Vector2(-141, 489)
+bot_name = "Basebot"
+
+[node name="Basebot3" parent="group_a" unique_id=1644060914 instance=ExtResource("7_2w4lw")]
+position = Vector2(-4, 537)
+bot_name = "Basebot2"
+
+[node name="Locked Door" type="Sprite2D" parent="." unique_id=1138060934 groups=["item"]]
+position = Vector2(-312, 40)
+texture = ExtResource("8_8mmyn")
+
+[node name="Area2D" type="Area2D" parent="Locked Door" unique_id=310223074]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locked Door/Area2D" unique_id=71180993]
+position = Vector2(4.5, -31)
+shape = SubResource("RectangleShape2D_l7oox")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=123135366]
+y_sort_enabled = true
+position = Vector2(1428, 146)
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1535682419]
+position = Vector2(7.5, 108.74999)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_8mmyn")
+
+[node name="Terminal" type="Sprite2D" parent="StaticBody2D" unique_id=1930583431 groups=["item"]]
+y_sort_enabled = true
+texture = ExtResource("7_8mmyn")
+region_enabled = true
+region_rect = Rect2(1545, 137, 367, 374)
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D/Terminal" unique_id=1525436987]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Terminal/Area2D" unique_id=248588356]
+shape = SubResource("RectangleShape2D_8mmyn")
+
+[node name="Elevator" type="Sprite2D" parent="." unique_id=1093063654 groups=["item"]]
+position = Vector2(-3429, 35)
+scale = Vector2(-1, 1)
+texture = ExtResource("9_l7oox")
+
+[node name="Area2D" type="Area2D" parent="Elevator" unique_id=310620257]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Area2D" unique_id=949349037]
+position = Vector2(-12, -21)
+shape = SubResource("RectangleShape2D_ikm1t")

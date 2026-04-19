@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bk2j01yuw6st5"]
 
-[ext_resource type="Texture2D" uid="uid://cios1ks5pqgm0" path="res://assets/character sheets.png" id="1_er5n6"]
+[ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="1_er5n6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aq85r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_um1vd"]
 atlas = ExtResource("1_er5n6")
-region = Rect2(1850, 500, 500, 800)
+region = Rect2(512, 1280, 256, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ybuc7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aq85r")
+"texture": SubResource("AtlasTexture_um1vd")
 }],
 "loop": true,
 "name": &"default",
@@ -18,8 +18,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um1vd"]
-radius = 63.99994
-height = 291.33337
+radius = 23.999928
+height = 183.83336
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er5n6"]
 radius = 215.0
@@ -27,25 +27,26 @@ height = 696.0
 
 [node name="Siren" type="CharacterBody2D" unique_id=988852894 groups=["robot"]]
 y_sort_enabled = true
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1255527157]
 y_sort_enabled = true
 position = Vector2(-13.333313, -239.99988)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ybuc7")
 
 [node name="floor" type="CollisionShape2D" parent="." unique_id=865482455]
 y_sort_enabled = true
-position = Vector2(5.666687, 41.000057)
+position = Vector2(-10.583315, -48.99995)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_um1vd")
 
-[node name="siren" type="Area2D" parent="." unique_id=1954208510]
+[node name="talkbox" type="Area2D" parent="." unique_id=1954208510]
 position = Vector2(-13.333313, -239.99988)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="siren" unique_id=1451395310]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="talkbox" unique_id=1451395310]
 position = Vector2(8, 0)
 shape = SubResource("CapsuleShape2D_er5n6")
 

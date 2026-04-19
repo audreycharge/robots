@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b5ibt3vdgf7lk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwaqx"]
+size = Vector2(312, 108)
+
+[node name="minigame_trigger" type="Area2D" unique_id=1892013678]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1849484022]
+shape = SubResource("RectangleShape2D_vwaqx")

@@ -32,8 +32,12 @@ directories/dch_directory={
 "diode": "res://timelines/diode.dch",
 "green": "res://timelines/green.dch",
 "haptor": "res://timelines/haptor.dch",
+"kintan": "res://timelines/kintan.dch",
 "phyter": "res://timelines/phyter.dch",
-"siren": "res://timelines/siren.dch"
+"sensol": "res://timelines/sensol.dch",
+"siren": "res://timelines/siren.dch",
+"trim": "res://timelines/trim.dch",
+"worl": "res://timelines/worl.dch"
 }
 directories/dtl_directory={
 "calibration": "res://timelines/calibration.dtl",
@@ -48,10 +52,21 @@ directories/dtl_directory={
 }
 layout/style_directory={}
 variables={
+"beam": false,
+"cable": false,
+"diode": false,
 "done": false,
-"response": "good"
+"group_a": false,
+"group_b": false,
+"haptor": false,
+"puck": false,
+"response": "neutral",
+"siren": false,
+"talik": false,
+"trak": false,
+"work": false
 }
-layout/style_list=[""]
+layout/style_list=[]
 layout/default_style=""
 
 [display]
@@ -69,6 +84,8 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 robot=""
 magnetic="objects that green can pick up"
 snoop=""
+sorting=""
+item=""
 
 [input]
 
@@ -113,6 +130,28 @@ interact={
 click={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(715, 32),"global_position":Vector2(734, 128),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+magnetize={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
+load_up={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
+]
+}
+load_down={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+]
+}
+pause={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

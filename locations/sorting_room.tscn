@@ -1,18 +1,24 @@
 [gd_scene format=3 uid="uid://gmmalmd3agye"]
 
-[ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_do43o"]
 [ext_resource type="Texture2D" uid="uid://wdci0srxqx0d" path="res://assets/test_layout.png" id="1_u2rjs"]
+[ext_resource type="Script" uid="uid://cy2nd1g4wgwgp" path="res://locations/sorting_room.gd" id="1_we577"]
 [ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="2_petwc"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="3_6frrs"]
-[ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="5_6yrnt"]
 [ext_resource type="Texture2D" uid="uid://dn2a1df3i638m" path="res://assets/conveyor.png" id="5_tqetr"]
 [ext_resource type="Texture2D" uid="uid://b6hdas86mlswk" path="res://assets/sparks.png" id="6_bm21l"]
+[ext_resource type="Texture2D" uid="uid://b7jmgaehae8o0" path="res://assets/furnace.png" id="7_6yrnt"]
+[ext_resource type="Texture2D" uid="uid://dx1lugjhlnj7c" path="res://assets/vent.png" id="8_y0ier"]
+[ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="9_we577"]
+[ext_resource type="PackedScene" uid="uid://bj25wfwi7emxf" path="res://helper_scripts/charger.tscn" id="10_ej2qn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bm21l"]
-polygon = PackedVector2Array(-228, 245, -224, -294, 213, -298, 228, 247, 341, 251, 343, -486, -505, -489, -502, 249)
+polygon = PackedVector2Array(-222, 252, -224, -294, 213, -298, 228, 247, 341, 251, 343, -486, -505, -489, -501, 253)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6yrnt"]
-polygon = PackedVector2Array(-775, 14, -774, 190, -531, 186, -442, 75, -440, -80, -527, 15)
+polygon = PackedVector2Array(-775, 14, -774, 185, -532, 184, -442, 75, -440, -80, -527, 15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y0ier"]
+polygon = PackedVector2Array(767, -107, 766, -27, 734, 129, 768, 19)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6yrnt"]
 blend_mode = 1
@@ -26,8 +32,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0.9529412, 0.8509804, 0, 1, 0.99215686, 0.
 blend_mode = 3
 
 [sub_resource type="Gradient" id="Gradient_bm21l"]
-offsets = PackedFloat32Array(0, 0.13983051, 0.28601694, 0.8301887, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.91283846, 0.7901744, 0.4838146, 1, 1, 0.4509804, 0.25490198, 1, 0.25490198, 0.05882353, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.28301886, 0.5235849, 1)
+colors = PackedColorArray(0.91283846, 0.7901744, 0.4838146, 1, 0.5899433, 0.18829173, 2.8878452e-07, 1, 0.25490198, 0.05882353, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6yrnt"]
 gradient = SubResource("Gradient_bm21l")
@@ -36,16 +42,23 @@ fill_from = Vector2(0.5106838, 0.5106838)
 fill_to = Vector2(1, 0.50213677)
 
 [sub_resource type="Gradient" id="Gradient_6yrnt"]
-offsets = PackedFloat32Array(0, 0.30720338)
+colors = PackedColorArray(0.5929038, 0.991509, 0.34717306, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y0ier"]
 gradient = SubResource("Gradient_6yrnt")
+fill = 1
+fill_from = Vector2(0.4970588, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_we577"]
+polygon = PackedVector2Array(54, -147, -66, -34, -63, 142, -82, 162, -83, -42, 41, -160, 56, -159)
 
 [node name="sorting_room" type="Node2D" unique_id=1251005235]
 y_sort_enabled = true
-script = ExtResource("1_do43o")
+script = ExtResource("1_we577")
 
 [node name="TestLayout" type="Sprite2D" parent="." unique_id=1487243673]
+z_index = -2
 position = Vector2(1281.7108, 886.4999)
 scale = Vector2(1.064, 1)
 texture = ExtResource("1_u2rjs")
@@ -56,7 +69,19 @@ visible = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TestLayout/Area2D" unique_id=415084571]
 polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.0742, -474.43344, 1218.3242, -159.24744, 1196.7075, 581.9775, 1197.6475, 705.2392, -1196.1638, 704.4119, -1198.0436, 572.8776, 1159.1133, 578.6684, 863.05884, 284.99115)
 
+[node name="Door" type="Sprite2D" parent="TestLayout" unique_id=1844765482]
+position = Vector2(544.4448, 32.500122)
+scale = Vector2(0.9398496, 1)
+texture = ExtResource("2_petwc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TestLayout" unique_id=916851310]
+show_behind_parent = true
+position = Vector2(544.44495, 32.500122)
+scale = Vector2(0.9398496, 1)
+occluder = SubResource("OccluderPolygon2D_bm21l")
+
 [node name="TestLayout2" type="Sprite2D" parent="." unique_id=479632114]
+z_index = -2
 position = Vector2(222, 886.4998)
 rotation = 3.1415925
 scale = Vector2(1, -1)
@@ -73,53 +98,59 @@ polygon = PackedVector2Array(-906.6885, 284.99115, -900.1095, -474.43344, 894.07
 [node name="hallway" type="Marker2D" parent="EntranceMarkers" unique_id=1318271212]
 position = Vector2(1959, 1305)
 
-[node name="Door" type="Sprite2D" parent="." unique_id=1844765482]
-position = Vector2(1861, 919)
-texture = ExtResource("2_petwc")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Door" unique_id=916851310]
-visible = false
-occluder = SubResource("OccluderPolygon2D_bm21l")
-
 [node name="hallway" parent="." unique_id=1901776446 instance=ExtResource("3_6frrs")]
 position = Vector2(1876, 1172)
 rotation = 3.1415925
 scale = Vector2(1, -1)
 connected_scene = "hallway"
 
-[node name="Sidedoor" type="Sprite2D" parent="." unique_id=613820126]
-y_sort_enabled = true
-position = Vector2(-782, 1040)
-scale = Vector2(-1, 1)
-texture = ExtResource("5_6yrnt")
-
-[node name="Conveyor" type="Sprite2D" parent="." unique_id=679307706]
-position = Vector2(-100, 1211)
+[node name="Conveyor" type="Sprite2D" parent="." unique_id=679307706 groups=["sorting"]]
+position = Vector2(-100, 1105)
 texture = ExtResource("5_tqetr")
+offset = Vector2(0, 100)
 
-[node name="Area2D" type="StaticBody2D" parent="Conveyor" unique_id=1012968308]
+[node name="collider" type="StaticBody2D" parent="Conveyor" unique_id=1012968308]
+position = Vector2(320, -216)
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Conveyor/collider" unique_id=1955554973]
+position = Vector2(0, 48)
+polygon = PackedVector2Array(428, 317, 428, 351, -762, 351, -855, 451, -1109, 461, -1106, 330)
+
+[node name="area2d" type="Area2D" parent="Conveyor" unique_id=1349878168]
 visible = false
-position = Vector2(320, -272)
+position = Vector2(320, -216)
+collision_layer = 3
+collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Conveyor/Area2D" unique_id=1955554973]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Conveyor/area2d" unique_id=586628460]
 polygon = PackedVector2Array(428, 4, 428, 351, -762, 351, -855, 451, -1109, 461, -1103, -37)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Conveyor" unique_id=2066379992]
+show_behind_parent = true
+position = Vector2(0, 106)
 occluder = SubResource("OccluderPolygon2D_6yrnt")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Conveyor" unique_id=1613038946]
+show_behind_parent = true
+position = Vector2(-16, 0)
+occluder = SubResource("OccluderPolygon2D_y0ier")
 
 [node name="sparks" type="CPUParticles2D" parent="." unique_id=573497426]
 z_index = 1
 material = SubResource("CanvasItemMaterial_6yrnt")
-position = Vector2(-812, 1130)
+position = Vector2(-812, 1124)
 amount = 15
 texture = ExtResource("6_bm21l")
 lifetime = 3.0
 speed_scale = 1.23
-explosiveness = 0.15
+explosiveness = 0.64
 randomness = 0.13
 emission_shape = 4
-emission_points = PackedVector2Array()
+emission_points = PackedVector2Array(-30, 30, 30, -30)
 emission_colors = PackedColorArray()
+particle_flag_align_y = true
 direction = Vector2(30, -30)
 spread = 30.0
 gravity = Vector2(0, 40)
@@ -142,15 +173,53 @@ offset_bottom = 1766.0
 color = Color(0.4886099, 0.37712726, 0.578578, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1526543228]
-position = Vector2(-1261, 1012)
-scale = Vector2(73.07093, 46.207764)
+position = Vector2(-844, 1070.75)
+scale = Vector2(50.84797, 26.757813)
+energy = 2.14
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_6yrnt")
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=697614768]
-position = Vector2(1851.4409, 1022.04456)
-rotation = 1.5707964
-scale = Vector2(-12.350441, 6.5368266)
+position = Vector2(1886.072, 942.5972)
+scale = Vector2(-21.036873, 16.413588)
 shadow_enabled = true
 shadow_color = Color(0.54017866, 0.21797961, 0.99999994, 0)
 texture = SubResource("GradientTexture2D_y0ier")
+
+[node name="Furnace" type="Sprite2D" parent="." unique_id=905010879]
+position = Vector2(-800, 1054)
+texture = ExtResource("7_6yrnt")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Furnace" unique_id=1383445533]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_we577")
+
+[node name="Vent" type="Sprite2D" parent="." unique_id=1867330782]
+position = Vector2(190, 964)
+texture = ExtResource("8_y0ier")
+
+[node name="Haptor" parent="." unique_id=642781843 instance=ExtResource("9_we577")]
+position = Vector2(-323, 1178)
+bot_name = "Haptor"
+talk = true
+
+[node name="Talik" parent="." unique_id=565251771 instance=ExtResource("9_we577")]
+position = Vector2(-502, 1372)
+bot_name = "Talik"
+talk = true
+
+[node name="Beam" parent="." unique_id=685522870 instance=ExtResource("9_we577")]
+position = Vector2(515, 1382)
+bot_name = "Beam"
+talk = true
+
+[node name="Trak" parent="." unique_id=871618651 instance=ExtResource("9_we577")]
+position = Vector2(293.0001, 1192)
+bot_name = "Trak"
+talk = true
+
+[node name="Charger" parent="." unique_id=377685486 instance=ExtResource("10_ej2qn")]
+z_index = -1
+position = Vector2(2162, 1320)
+
+[connection signal="break_trak" from="." to="." method="_on_break_trak"]

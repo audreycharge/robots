@@ -1,12 +1,14 @@
 siren: Starting calibration tests\:
-[signal arg="overheat"]
-siren: Pick up any metal with your magnets.
+label last
+set {done} = true
+siren: Do you see that pile of metal behind you? Pick up any metal with your magnets.
 [signal arg="calibrate_magnet"]
 [end_timeline]
 label overpowered (overpowered)
 siren: Too big! Too big! Lower it!
 [end_timeline]
-label lower (lower)
+label lower
 siren: A large burst happens sometimes. You need to be able to control it.
 [signal arg="overheat"]
+green: I.. need... what?
 [end_timeline]

@@ -31,12 +31,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
+[node name="Resume" type="Button" parent="VBoxContainer" unique_id=1175133006]
+layout_mode = 2
+text = "Resume"
+
 [node name="Controls" type="Button" parent="VBoxContainer" unique_id=267085198]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Controls"
 
 [node name="Credits" type="Button" parent="VBoxContainer" unique_id=221132253]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Credits"

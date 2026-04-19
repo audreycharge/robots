@@ -3,6 +3,86 @@
 [ext_resource type="Script" uid="uid://cfbdriw43n1uj" path="res://items/hud.gd" id="1_7ynxm"]
 [ext_resource type="Texture2D" uid="uid://c2ng8k5hh5i5u" path="res://icon.svg" id="2_2v4x5"]
 [ext_resource type="Texture2D" uid="uid://bq2thk8g0qv86" path="res://assets/ui/overheat.png" id="3_2v4x5"]
+[ext_resource type="Shader" uid="uid://dpvpcxku2u6o5" path="res://shaders/shutdown.gdshader" id="4_qy7de"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy7ep"]
+bg_color = Color(1, 1, 1, 0.47843137)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acqqo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v4x5"]
+bg_color = Color(0.38431373, 0.6509804, 0.6862745, 0.16078432)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7de"]
+corner_radius_top_left = 20
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_2v4x5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overheating:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vy7ep"]
+resource_name = "black_out"
+
+[sub_resource type="Animation" id="Animation_qy7de"]
+resource_name = "overheating"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overheating:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy7ep"]
+_data = {
+&"RESET": SubResource("Animation_2v4x5"),
+&"black_out": SubResource("Animation_vy7ep"),
+&"overheating": SubResource("Animation_qy7de")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edvn6"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0.86370087, 0.4739406, 0.41378042, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vy7ep"]
+shader = ExtResource("4_qy7de")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [node name="HUD" type="Control" unique_id=2048183109]
 z_index = 2
@@ -29,6 +109,41 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Press E to talk"
 
+[node name="instructions" type="Label" parent="." unique_id=584158992]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = 925.0
+offset_right = 329.0
+offset_bottom = -58.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vy7ep")
+text = "Instructions"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="sort" type="Label" parent="." unique_id=145295962]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.011000001
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 11.119999
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Press E to sort"
+
 [node name="Button" type="Button" parent="." unique_id=1521509421]
 layout_mode = 1
 anchors_preset = -1
@@ -38,35 +153,48 @@ offset_left = 43.0
 offset_top = 41.0
 offset_right = 171.32
 offset_bottom = 79.2
-text = "test"
+text = "exit"
 
-[node name="Temperature" type="Label" parent="." unique_id=376256383]
+[node name="Panel" type="Panel" parent="." unique_id=589069836]
+layout_mode = 0
+offset_left = 1411.0
+offset_top = 35.0
+offset_right = 1896.0
+offset_bottom = 268.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_acqqo")
+
+[node name="PowerProgress" type="ProgressBar" parent="Panel" unique_id=1517939201]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -308.0
-offset_bottom = 42.0
+offset_left = -441.0
+offset_top = 98.0
+offset_right = -45.0
+offset_bottom = 211.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_2v4x5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qy7de")
+step = 1.0
+value = 8.0
+
+[node name="Temperature" type="Label" parent="Panel" unique_id=376256383]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -441.0
+offset_top = 25.0
+offset_right = -133.0
+offset_bottom = 67.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Temperature:"
 
-[node name="PowerProgress" type="ProgressBar" parent="." unique_id=1517939201]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -420.0
-offset_top = 144.0
-offset_right = -24.0
-offset_bottom = 257.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
-step = 1.0
-value = 8.0
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=366331415]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -94,5 +222,117 @@ icon = ExtResource("2_2v4x5")
 
 [node name="Overheating" type="Sprite2D" parent="." unique_id=1407208107]
 visible = false
-position = Vector2(984, 491)
+position = Vector2(1028, 518)
+scale = Vector2(1.8479452, 1.8479452)
 texture = ExtResource("3_2v4x5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=487658350]
+libraries/ = SubResource("AnimationLibrary_vy7ep")
+
+[node name="stop_sort" type="PanelContainer" parent="." unique_id=1503670019]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -68.0
+offset_right = 155.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_edvn6")
+
+[node name="stop_sort" type="VBoxContainer" parent="stop_sort" unique_id=1692563510]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="stop_sort/stop_sort" unique_id=1336719417]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Stop sorting?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="stop_sort/stop_sort" unique_id=971098080]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="yes" type="Button" parent="stop_sort/stop_sort/HBoxContainer" unique_id=2060350692]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "YES"
+
+[node name="no" type="Button" parent="stop_sort/stop_sort/HBoxContainer" unique_id=870899363]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NO"
+
+[node name="pause" type="PanelContainer" parent="." unique_id=1436229877]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -68.0
+offset_right = 155.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_edvn6")
+
+[node name="pause" type="VBoxContainer" parent="pause" unique_id=1156878944]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="pause/pause" unique_id=575383919]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="pause/pause" unique_id=1130802212]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Restart" type="Button" parent="pause/pause/HBoxContainer" unique_id=1370022392]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="Resume" type="Button" parent="pause/pause/HBoxContainer" unique_id=1969219096]
+layout_mode = 2
+text = "Resume"
+
+[node name="Exit" type="Button" parent="pause/pause/HBoxContainer" unique_id=1037061439]
+layout_mode = 2
+text = "Exit"
+
+[node name="Timer" type="Timer" parent="." unique_id=414756665]
+wait_time = 4.0
+one_shot = true
+
+[node name="glitch" type="CanvasLayer" parent="." unique_id=1621889586]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="glitch" unique_id=1388882758]
+material = SubResource("ShaderMaterial_vy7ep")
+offset_left = -47.0
+offset_top = -27.0
+offset_right = 1988.0
+offset_bottom = 1114.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="stop_sort/stop_sort/HBoxContainer/yes" to="." method="_on_yes_button_down"]
+[connection signal="button_down" from="stop_sort/stop_sort/HBoxContainer/no" to="." method="_on_no_button_down"]
+[connection signal="button_down" from="pause/pause/HBoxContainer/Restart" to="." method="_on_restart_button_down"]
+[connection signal="button_down" from="pause/pause/HBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="pause/pause/HBoxContainer/Exit" to="." method="_on_exit_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

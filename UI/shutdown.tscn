@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://gx21kyvm4qsi"]
+
+[ext_resource type="Shader" uid="uid://dpvpcxku2u6o5" path="res://shaders/shutdown.gdshader" id="1_fwbwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkff1"]
+shader = ExtResource("1_fwbwa")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1132940701]
+
+[node name="Timer" type="Timer" parent="." unique_id=291644714]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=712411496]
+material = SubResource("ShaderMaterial_nkff1")
+offset_left = -47.0
+offset_top = -27.0
+offset_right = 1988.0
+offset_bottom = 1114.0

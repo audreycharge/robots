@@ -4,9 +4,17 @@
 
 [node name="Power" type="Node" unique_id=712957883]
 script = ExtResource("1_n2jeh")
+power = 80
 
 [node name="Timer" type="Timer" parent="." unique_id=1972045402]
+wait_time = 3.0
+autostart = true
+ignore_time_scale = true
+
+[node name="Charger" type="Timer" parent="." unique_id=901501468]
+wait_time = 0.2
 autostart = true
 ignore_time_scale = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Charger" to="." method="_on_charger_timeout"]

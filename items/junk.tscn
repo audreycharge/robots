@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bq86t0wf5o14p"]
+
+[ext_resource type="Texture2D" uid="uid://38hts1t2xwjq" path="res://assets/tilesheet2.png" id="1_546qv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enneo"]
+atlas = ExtResource("1_546qv")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hsku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enneo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04xku"]
+radius = 68.18358
+
+[node name="junk" type="CharacterBody2D" unique_id=989283492 groups=["magnetic"]]
+y_sort_enabled = true
+collision_layer = 5
+collision_mask = 5
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1754502610]
+sprite_frames = SubResource("SpriteFrames_3hsku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134399815]
+shape = SubResource("CircleShape2D_04xku")

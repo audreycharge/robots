@@ -1,21 +1,48 @@
 {
-	"siren": {
+	"Siren": {
+		"array": ["circle", "circle", "circle", "square", "square"],
+		"tolerance": 3,
+		"interaction_points": 0
+	},
+	"Cable": {
 		"array": ["square", "up", "down", "down", "stick"],
-		"tolerance": 3
+		"tolerance": 3,
+		"interaction_points": 0
 	},
-	"cable": {
-		"array": ["sin", "cos", "tan", "cos", "tan"]
+	"Diode": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
 	},
-	"diode": {
-		"array": ["sin", "cos", "tan", "cos", "tan"]
+	"Haptor": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
 	},
-	"haptor": {
-		"array": ["sin", "cos", "tan", "cos", "tan"]
+	"Trak": {
+		"array": ["circle", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
 	},
-	"trak": {
-		"array": ["sin", "cos", "tan", "cos", "tan"]
+	"Talik": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
 	},
-	"diode": {
-		"array": ["sin", "cos", "tan", "cos", "tan"]
+	"Beam": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
 	},
+	"group_a": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
+	},
+	"group_b": {
+		"array": ["square", "up", "down", "down", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
+	},
+	
 }

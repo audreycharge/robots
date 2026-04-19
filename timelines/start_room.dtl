@@ -1,15 +1,26 @@
 label Siren
-siren: ...an you not hear me?
-siren: Can you tell me your ID number?
-green: GN-354
-siren: Hello GN-354! I'm SN-274, your direct supervisor and network mate.
-siren: You may call me Siren.
-[signal arg="respond"]
-[end_timeline]
-label start_again
-green: ...
-siren: Don't be shy!
-siren: Let's start with some calibration tests. I'm sure your knowledge base has already supplied you-
-green: my what?
-siren: -with all of the relevant information on who we are and what we do here!
-[signal arg="calibrate"]
+if {done} == true:
+	jump calibration/last
+else:
+	siren: ...an you not hear me?
+	siren: Can you tell me your ID number?
+	green: GN-354
+	siren: Hello GN-354! I'm SN-274, your direct supervisor and network mate.
+	siren: You may call me Siren.
+	[signal arg="respond"]
+	[end_timeline]
+	label Siren_response
+	if {response} == "right":
+		green: Hello!
+		siren: So polite!
+	elif {response} == "neutral":
+		green: Hi.
+		siren: It's nice to meet you!
+	else:
+		green: ...
+		siren: Don't be shy!
+	siren: Let's start with some calibration tests. I'm sure your knowledge base has already supplied you-
+	green: my what?
+	siren: -with all of the relevant information on who we are and what we do here!
+	jump calibration/
+	[end_timeline]

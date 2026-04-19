@@ -91,6 +91,8 @@ func _on_square_pressed() -> void:
 
 func _on_submit_pressed() -> void:
 	submit_code.emit(array);
+	array = [];
+	update_code();
 	pass # Replace with function body.
 
 

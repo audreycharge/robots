@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bj25wfwi7emxf"]
+
+[ext_resource type="Script" uid="uid://bqywem7no4hfh" path="res://helper_scripts/charger.gd" id="1_5wk14"]
+[ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="2_hclom"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hclom"]
+radius = 48.0
+height = 222.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xilih"]
+atlas = ExtResource("2_hclom")
+region = Rect2(768, 256, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_467gi"]
+atlas = ExtResource("2_hclom")
+region = Rect2(768, 384, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqnjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xilih")
+}],
+"loop": true,
+"name": &"charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_467gi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_hclom"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xilih"]
+gradient = SubResource("Gradient_hclom")
+fill = 1
+fill_from = Vector2(0.49358973, 0.50213677)
+fill_to = Vector2(0.8119658, 0.15598291)
+
+[node name="Charger" type="Area2D" unique_id=377685486]
+y_sort_enabled = true
+script = ExtResource("1_5wk14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335782203]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hclom")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=318065918]
+sprite_frames = SubResource("SpriteFrames_sqnjh")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=319421170]
+position = Vector2(3.8146973e-06, 0.9999981)
+scale = Vector2(5.4375, 2.191231)
+color = Color(1, 1, 0.36078432, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_xilih")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

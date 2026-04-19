@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlcxvv5poreim"]
+[gd_scene format=3 uid="uid://dlcxvv5poreim"]
 
 [ext_resource type="Script" uid="uid://8ru6xbl7m6gn" path="res://helper_scripts/temperature.gd" id="1_gd0u2"]
 
-[node name="temperature" type="Node"]
+[node name="temperature" type="Node" unique_id=1091286657]
 script = ExtResource("1_gd0u2")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="heatup" type="Timer" parent="." unique_id=1025677204]
+wait_time = 2.0
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="." unique_id=1119461475]
 wait_time = 3.0
 
+[connection signal="timeout" from="heatup" to="." method="_on_heatup_timeout"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
