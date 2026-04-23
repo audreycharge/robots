@@ -8,12 +8,21 @@ else:
 label Haptor_response
 set {haptor} = true
 if {response} == "right":
+	green: Hello! Just about to start.
+	haptor: You better not be sneaking those pieces out. I know what you're like.
 elif {response} == "neutral":
+	green: I'm doing it now.
+	haptor: Repeat what you just said.
+	green: I'm doing it now?
 else:
+	green: Sorry, Haptor.
+	haptor: You see that, Beam? So polite.
 [end_timeline]
 label Trak
 if {trak} == true:
+	trak: Give me a few more minutes.
 else:
+	<Empty Text Event>
 	[signal arg="respond"]
 [end_timeline]
 label Trak_response
@@ -25,12 +34,17 @@ set {trak} = true
 label Talik
 if {talik} == true:
 else:
+	talik: Hey, Green! How's it going?
 	[signal arg="respond"]
 [end_timeline]
 label Talik_response
 if {response} == "right":
+	green: It's okay
 elif {response} == "neutral":
+	green: Mm.
+	talik: <Empty Text Event>
 else:
+	<Empty Text Event>
 set {talik} = true
 [end_timeline]
 label Beam
@@ -47,4 +61,10 @@ set {beam} = true
 [end_timeline]
 label work
 haptor: WORK! NOW!
+[end_timeline]
+label trak_broke
+trak: Please excuse me.
+[wait time="2.0"]
+beam: Oh slag is Trak okay?
+haptor: Aright, everyone OUT! And get the next shift in here!
 [end_timeline]

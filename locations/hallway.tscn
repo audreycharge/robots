@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chdnmj154e4h6"]
 
 [ext_resource type="Texture2D" uid="uid://dt0gk7cqgwjnh" path="res://assets/hallend.png" id="1_2seor"]
-[ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_ijndg"]
+[ext_resource type="Script" uid="uid://bv2ofua7bg3vv" path="res://locations/hallway.gd" id="1_l7oox"]
 [ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="3_bgp74"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="4_dgtn4"]
 [ext_resource type="Texture2D" uid="uid://dtet6n45n4pfn" path="res://assets/frontdoor.png" id="5_0vc41"]
@@ -14,7 +14,7 @@
 size = Vector2(808.33344, 1239.1665)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vc41"]
-size = Vector2(740, 739)
+size = Vector2(915, 739)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7oox"]
 size = Vector2(471, 572)
@@ -30,7 +30,7 @@ size = Vector2(468, 540)
 
 [node name="hallway" type="Node2D" unique_id=1892908119]
 y_sort_enabled = true
-script = ExtResource("1_ijndg")
+script = ExtResource("1_l7oox")
 
 [node name="Hallright" type="Sprite2D" parent="." unique_id=208531435]
 position = Vector2(212.05762, -229.57898)
@@ -112,9 +112,9 @@ position = Vector2(55, 133.33325)
 rotation = 3.1415925
 scale = Vector2(1.3333334, -1.3333334)
 
-[node name="Puck" parent="." unique_id=1180282840 instance=ExtResource("7_2w4lw")]
+[node name="Patch" parent="." unique_id=1180282840 instance=ExtResource("7_2w4lw")]
 position = Vector2(984, 578)
-bot_name = "Puck"
+bot_name = "Patch"
 talk = true
 
 [node name="group_b" type="Area2D" parent="." unique_id=1887603486 groups=["robot"]]
@@ -122,32 +122,45 @@ y_sort_enabled = true
 position = Vector2(-2457, 160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="group_b" unique_id=1925354708]
+position = Vector2(-122, -13)
 shape = SubResource("RectangleShape2D_0vc41")
 
-[node name="Basebot4" parent="group_b" unique_id=1099762537 instance=ExtResource("7_2w4lw")]
-position = Vector2(45, 178)
+[node name="Sheen" parent="group_b" unique_id=1099762537 instance=ExtResource("7_2w4lw")]
+position = Vector2(3.7550926e-06, 305)
+bot_name = "Sheen"
 
-[node name="Basebot" parent="group_b" unique_id=154718622 instance=ExtResource("7_2w4lw")]
-position = Vector2(-125, 170)
+[node name="Rote" parent="group_b" unique_id=154718622 instance=ExtResource("7_2w4lw")]
+position = Vector2(-67.000015, 186)
+bot_name = "Rote"
+
+[node name="Screen" parent="group_b" unique_id=1914234001 instance=ExtResource("7_2w4lw")]
+position = Vector2(-245.99998, 228.99998)
+bot_name = "Screen"
 
 [node name="group_a" type="Area2D" parent="." unique_id=2085888286 groups=["robot"]]
 y_sort_enabled = true
 position = Vector2(-4279, 41)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="group_a" unique_id=1122339025]
-position = Vector2(-67, 235.5)
+position = Vector2(20.5, 235.5)
 shape = SubResource("RectangleShape2D_0vc41")
 
-[node name="Basebot5" parent="group_a" unique_id=533751750 instance=ExtResource("7_2w4lw")]
+[node name="Vale" parent="group_a" unique_id=533751750 instance=ExtResource("7_2w4lw")]
 position = Vector2(-19, 463.00003)
+scale = Vector2(-0.8, 0.8)
+bot_name = "Vale"
 
-[node name="Basebot2" parent="group_a" unique_id=1656157866 instance=ExtResource("7_2w4lw")]
+[node name="Beam" parent="group_a" unique_id=1656157866 instance=ExtResource("7_2w4lw")]
 position = Vector2(-141, 489)
-bot_name = "Basebot"
+bot_name = "Beam"
 
-[node name="Basebot3" parent="group_a" unique_id=1644060914 instance=ExtResource("7_2w4lw")]
-position = Vector2(-4, 537)
-bot_name = "Basebot2"
+[node name="Gnuna" parent="group_a" unique_id=1218784136 instance=ExtResource("7_2w4lw")]
+position = Vector2(6, 553)
+bot_name = "Gnuna"
+
+[node name="Clip" parent="group_a" unique_id=1644060914 instance=ExtResource("7_2w4lw")]
+position = Vector2(156, 537)
+bot_name = "Clip"
 
 [node name="Locked Door" type="Sprite2D" parent="." unique_id=1138060934 groups=["item"]]
 position = Vector2(-312, 40)
@@ -191,3 +204,8 @@ texture = ExtResource("9_l7oox")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Area2D" unique_id=949349037]
 position = Vector2(-12, -21)
 shape = SubResource("RectangleShape2D_ikm1t")
+
+[node name="Trak_broken" parent="." unique_id=738541653 instance=ExtResource("7_2w4lw")]
+visible = false
+position = Vector2(-612, 378)
+bot_name = "Trak_broken"

@@ -5,42 +5,52 @@
 		"interaction_points": 0
 	},
 	"Cable": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "circle", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"Diode": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "circle", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"Haptor": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "square", "stick", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"Trak": {
-		"array": ["circle", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "stick", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"Talik": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "square", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"Beam": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "square", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"group_a": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "square", "square", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},
 	"group_b": {
-		"array": ["square", "up", "down", "down", "stick"],
+		"array": ["circle", "circle", "stick", "stick", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
+	},
+	"Phyter": {
+		"array": ["circle", "circle", "stick", "stick", "stick"],
+		"tolerance": 3,
+		"interaction_points": 0
+	},
+	"Cylon": {
+		"array": ["circle", "circle", "stick", "stick", "stick"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},

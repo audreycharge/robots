@@ -1,8 +1,8 @@
 class_name SortingRoom extends BaseScene
 
-var trak_break = false
 signal break_trak;
 signal get_broken;
+@onready var anim_player = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +20,8 @@ func _ready() -> void:
 		print_debug("i need to work")
 	
 	
-	if scene_manager.shift == 2 and !trak_break:
-		trak_break = true;
+	if scene_manager.shift == 2 and !scene_manager.trak_break:
+		scene_manager.trak_break = true;
 		break_trak.emit()
 		print_debug("break trak")
 	
@@ -30,6 +30,8 @@ func _ready() -> void:
 		scene_manager.player.get_node("AnimationPlayer").play("wakeup")
 		scene_manager.player.state_machine = "booting"
 		print_debug("get broken idiot")
+		scene_manager.change_scene(self, "homeroom")
+		#Dialogic.start("sorting_room", "you_broke")
 		
 	pass # Replace with function body.
 
@@ -48,7 +50,5 @@ func _on_dialogic_signal(arg: String):
 
 
 func _on_break_trak() -> void:
-	#play trak glitching arms animation,
-	#play coworker dialogue
-	#trak leaves
-	pass # Replace with function body.
+	anim_player.play("trak_broke")
+	Dialogic.play("sorting_room", "trak_broke")

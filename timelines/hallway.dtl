@@ -1,43 +1,75 @@
 label ceiling
 sensol: Dıp ʎon ɥǝɐɹ? Sowat's ıs ƪoınınƃ ɐ clawqoʇ's nǝʇʍoɹʞ!
+kintan: ⊥ɥǝʎ'ɹǝ ʇoo pıɟɟǝɹǝnʇ! Mɥɐʇ ıɟ ʇɥǝʎ pon'ʇ 1ǝʇ ıʇ nsǝ ıʇs ɯɐƃnǝʇs ɐnʎɯoɹǝ?
 [end_timeline]
-label Puck
-green: Good morning.
-worl: Hey Green. You know, We've been wondering.
-cable: No one's ever seen you climb.
-[signal arg="respond"]
-[end_timeline]
-label group_b_response
-if {response} == "right":
-	green: I don't really need to? Doesn't really make my work more efficient
-elif {response} == "neutral":
-	green: I can't.
+label Patch
+if {patch} == true:
+	Ignore Patch.
 else:
-	green: No one's seen you climb either
+	patch: Hey Green. Catch!
+	Patch throws something at your face.
+	[signal arg="respond"]
+[end_timeline]
+label Patch_response
+if {response} == "right":
+	You dodge the thing.
+	green: I'm not doing that.
+elif {response} == "neutral":
+	You slapped whatever that was back at Patch.
+	patch: HEY! The least you could do is catch it.
+	green: And give you the satisfaction? That was plastic!
+else:
+	You activate your magnets too late. It dinged off your head.
+	patch: Nothing to say?
+	It's a good thing robots can't cry.
+set {patch} = true
 [end_timeline]
 label group_b
 if {group_b} == true:
 	kintan: group b final words
 else:
-	trim: test
+	Sheen: What if we make something fun like a claw machine?
+	Rote: We are claw bots. We don't even have the mobility for joy sticks.
+	screen: But imagine! Claws squared!
 	[signal arg="respond"]
+[end_timeline]
+label group_b_response
+if {response} == "right":
+	green: That's such a cool idea!
+	Sheen: See! Green agrees with me!
+	Rote: Ugh. Don't enable it, Green.
+elif {response} == "neutral":
+	green: What if you just attach another longer claw to yourself?
+	screen: Oh hey Green. Don't have materials for that but we'll keep cooking.
+else:
+	green: What are you even talking about
+	Rote: <Empty Text Event>
+set {group_b} = true
 [end_timeline]
 label group_a
 if {group_a} == true:
 	...
 else:
-	...so smug! You should've seen how Green shrugged me off.
-	I need Haptor to stop comparing us, like I need to be reminded...
+	beam: ...so smug! You should've seen how Green shrugged me off.
+	beam: I need Haptor to stop comparing us, like I need to be reminded...
+	beam: ...Talk to you later. I gotta go to my shift.
 	[signal arg="respond"]
 [end_timeline]
 label group_a_response
 if {response} == "right":
-	green: (You don't say anything)
+	green: Is Beam okay?
+	gnuna: Just work problems. Don't worry about it.
+	vale: Can you let Beam know that we'll be by for the shift change?
+	green: Will do.
 elif {response} == "neutral":
-	green: Yeah he shouldn't have done that.
+	green: Hey guys. How's everything?
+	vale: It's okay. We'll be by later for the shift change.
 else:
-	green: what are we talking about?
-	That's literally none of your business
+	green: What are we talking about?
+	vale: It's nothing you should worry about.
+	gnuna: Yeah it's not your business.
+set {group_a} = true
+[end_timeline]
 label Terminal
 It's a little old and laggy, but we don't really have the parts to repair it. We do so much recycling though. If only we could have some of those pieces.
 [end_timeline]
@@ -46,4 +78,17 @@ I don’t have the credentials to use it. Cable probably does.
 [end_timeline]
 label Locked Door
 It’s rusting at the edges, which is weird because there’s no oxygen here anymore.
+[end_timeline]
+label Trak
+green: Are you okay?
+[signal arg="respond"]
+[end_timeline]
+label Trak_response
+if {response} == "right":
+	green: How car I help?
+	trak: Wow. Today must suck if you're talking that stiffly
+elif {response} == "neutral":
+else:
+green: last words
+[signal arg="final"]
 [end_timeline]

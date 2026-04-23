@@ -17,13 +17,13 @@ func _ready():
 		
 func position_player() -> void:
 	var last_scene = scene_manager.last_scene_name
-	#print_debug("come back")
+	print_debug(last_scene)
 	if last_scene.is_empty():
 		last_scene = "any"
 	for entrance in entrance_markers.get_children():
 		#print_debug(entrance.name)
 		if entrance is Marker2D and entrance.name == last_scene:
-			#print_debug(str("i'm coming from ",entrance.name))
+			print_debug(str("i'm coming from ", entrance.name))
 			#print_debug(entrance.global_position)
 			player.global_position = entrance.global_position 
 			

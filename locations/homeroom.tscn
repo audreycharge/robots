@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7yax7ognsbmo"]
 
+[ext_resource type="Script" uid="uid://dwrnb1l45ij01" path="res://locations/homeroom.gd" id="1_2lrbo"]
 [ext_resource type="Texture2D" uid="uid://wdci0srxqx0d" path="res://assets/test_layout.png" id="1_bisa2"]
-[ext_resource type="Script" uid="uid://bls41j0hs60vp" path="res://room_travel.gd" id="1_v5vuv"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="3_4o3f6"]
 [ext_resource type="PackedScene" uid="uid://bv1vt0ocffs1h" path="res://characters/player.tscn" id="3_forvw"]
 [ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="4_bwylg"]
@@ -28,7 +28,7 @@ radius = 43.365353
 
 [node name="homeroom" type="Node2D" unique_id=717916508]
 y_sort_enabled = true
-script = ExtResource("1_v5vuv")
+script = ExtResource("1_2lrbo")
 
 [node name="TestLayout" type="Sprite2D" parent="." unique_id=68746766]
 z_index = -2
@@ -80,6 +80,9 @@ connected_scene = "hallway"
 
 [node name="hallway" type="Marker2D" parent="EntranceMarkers" unique_id=1275377211]
 position = Vector2(2121, 1375)
+
+[node name="sorting_room" type="Marker2D" parent="EntranceMarkers" unique_id=538272202]
+position = Vector2(1061, 1458)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=435361564]
 visible = false
@@ -187,3 +190,14 @@ region_rect = Rect2(542, 199, 74, 53)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Horse Toy/Area2D" unique_id=1520362003]
 shape = SubResource("CircleShape2D_2lrbo")
+
+[node name="back_home_markers" type="Node2D" parent="." unique_id=360179096]
+
+[node name="Siren" type="Marker2D" parent="back_home_markers" unique_id=1286429787]
+position = Vector2(928, 1353)
+
+[node name="Cable" type="Marker2D" parent="back_home_markers" unique_id=915576346]
+position = Vector2(1276, 1442)
+
+[node name="Diode" type="Marker2D" parent="back_home_markers" unique_id=1634091232]
+position = Vector2(849, 1476)

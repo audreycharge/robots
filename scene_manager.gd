@@ -5,7 +5,7 @@ var last_scene_name: String
 
 var scene_dir_path = "res://locations/"
 var game_dir_path = "res://games/"
-var menu_path = "res://UI/main_menu.tscn"
+var ui_path = "res://UI/"
 var ling_json = "res://games/ling.json"
 var player_json = "res://helper_scripts/player.json"
 
@@ -15,6 +15,7 @@ var sort_complete = false;
 var shift = 1;
 var break_talks = 0;
 var you_break = false
+var trak_break = false
 
 
 @onready var temp
@@ -84,15 +85,18 @@ func compare_codes(submitted, partner):
 	for i in 5:
 		if submitted[i] == partner_array[i]:
 			correct+=1
-	if correct < 3:
+	if correct < 2:
 		increment_n(1)
+		print_debug(get_score())
 		return "wrong";
 	elif correct < 4:
 		increment_n(1)
 		increment_p(1)
+		print_debug(get_score())
 		return "neutral";
 	else:
 		increment_p(1)
+		print_debug(get_score())
 		return "right";
 
 func go_to_minigame(from, to_scene_name: String) -> void:
@@ -142,6 +146,7 @@ func get_score():
 	if p_score !=0 or n_score !=0:
 		return p_score/n_score;
 	elif p_score == 0 and n_score == 0:
+		Dialogic.VAR.ending = "avoid"
 		return "you can't avoid your way into a better life";
 	
 #func on_low_battery():
@@ -157,7 +162,8 @@ func update_shutdown_count():
 	var test = player_info["shutdowns"]
 	print_debug(str("shutdowns: ", test));
 	
-func return_to_menu(from):
+func go_to_ui(from, to_scene_name):
 	print_debug(from)
 	save_player(from)
-	from.get_tree().call_deferred('change_scene_to_file', menu_path)
+	var full_path = ui_path + to_scene_name + ".tscn"
+	from.get_tree().call_deferred('change_scene_to_file', full_path)

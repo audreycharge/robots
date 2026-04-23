@@ -8,6 +8,7 @@ var scene
 @onready var exitButton = $Button
 @onready var glitch_timer = $Timer
 
+signal glitch_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -99,7 +100,7 @@ func _on_exit_button_down() -> void:
 	scene = parent.get_parent().get_parent()
 	print_debug(scene)
 	$pause.visible = false
-	scene_manager.return_to_menu(scene);
+	scene_manager.go_to_ui(scene, "main_menu");
 	#get_tree().call_deferred('change_scene_to_file',"res://UI/main_menu.tscn" )
 	scene_manager.reset_levels()
 	pass # Replace with function body.
@@ -112,7 +113,7 @@ func on_shutdown():
 
 func _on_timer_timeout() -> void:
 	$glitch.visible = false;
-	print_debug("bye bye")
+	glitch_done.emit()
 	if parent is not Camera2D: #if you are currently sorting job
 		scene_manager.reset_levels()
 		scene_manager.player.reset()

@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 			dialoging = i.get_parent().name
 			get_node("Camera2D/HUD/talk").text = str("E -> Talk to ", dialoging)
 			break;
-		elif i.is_in_group("robot"):
+		elif i.is_in_group("robot") and i.name != "Area2D":
 			get_node("Camera2D/HUD/talk").visible = true
 			interactable = true
 			dialoging = i.name
@@ -100,10 +100,11 @@ func _input(event: InputEvent) -> void:
 		state_machine = "talking"
 		interactable = false
 		if dialoging != "":
-			print_debug(Dialogic.VAR.response)
-			print_debug(get_parent().name)
+			#print_debug(Dialogic.VAR.response)
+			#print_debug(get_parent().name)
 			if !Dialogic.VAR.work:
 				Dialogic.start(get_parent().name, dialoging)
+				print_debug(dialoging)
 			else:
 				Dialogic.start(get_parent().name, "work")
 	elif event.is_action_pressed("interact"):
@@ -172,9 +173,11 @@ func _on_dialogic_signal(argument: String):
 	elif (argument == "overheat"):
 		print_debug("you pass out");
 		$AnimationPlayer.play("shutdown");
+		$Camera2D/HUD.on_shutdown()
+		state_machine = "shutting"
 
 func _on_timeline_ended():
-	if !language.visible:
+	if !language.visible and state_machine == "talking":
 		state_machine = "moving"
 
 
@@ -197,6 +200,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			scene_manager.reset_levels()
 			Dialogic.clear()
 			reset()
+			$ColorRect.visible = false;
+			print_debug("wake up again")
+			state_machine = "moving"
 		else:
 			scene_manager.reset_levels()
 			scene_manager.update_shutdown_count()
@@ -214,4 +220,3 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func on_shutdown():
 	get_node("AnimationPlayer").play("shutdown");
 	state_machine = "shutting"
-	

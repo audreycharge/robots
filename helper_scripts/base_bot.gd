@@ -4,6 +4,7 @@ class_name Basebot extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 var location;
 @export var talk: bool = false
+var changed = false;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if bot_name == "Trak_broke" and !changed:
+		changed = true
+		sprite.animation = bot_name
 	pass
 
 func _on_dialogic_signal(argument:String):

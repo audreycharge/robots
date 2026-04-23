@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dtc7gohhklyxd"]
+
+[ext_resource type="Script" uid="uid://dfh24jhs1i7ml" path="res://UI/ending.gd" id="1_fa0mi"]
+
+[node name="ending" type="Node2D" unique_id=1937602101]
+script = ExtResource("1_fa0mi")
+
+[node name="Control" type="Control" parent="." unique_id=364229744]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1925.0
+offset_bottom = 1085.0
+
+[node name="Label" type="Label" parent="Control" unique_id=107490568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -11.5
+offset_right = 112.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Thanks for playing the demo!
+(Click to leave)"
+horizontal_alignment = 1

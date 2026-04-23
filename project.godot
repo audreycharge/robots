@@ -27,19 +27,30 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Rote": "res://timelines/Rote.dch",
+"Sheen": "res://timelines/Sheen.dch",
+"beam": "res://timelines/beam.dch",
 "cable": "res://timelines/cable.dch",
 "cylon": "res://timelines/cylon.dch",
 "diode": "res://timelines/diode.dch",
+"gnuna": "res://timelines/gnuna.dch",
 "green": "res://timelines/green.dch",
 "haptor": "res://timelines/haptor.dch",
 "kintan": "res://timelines/kintan.dch",
+"patch": "res://timelines/patch.dch",
 "phyter": "res://timelines/phyter.dch",
+"screen": "res://timelines/screen.dch",
 "sensol": "res://timelines/sensol.dch",
 "siren": "res://timelines/siren.dch",
+"solder": "res://timelines/solder.dch",
+"talik": "res://timelines/talik.dch",
+"trak": "res://timelines/trak.dch",
 "trim": "res://timelines/trim.dch",
+"vale": "res://timelines/vale.dch",
 "worl": "res://timelines/worl.dch"
 }
 directories/dtl_directory={
+"back_home": "res://timelines/back_home.dtl",
 "calibration": "res://timelines/calibration.dtl",
 "f1_leaving": "res://timelines/f1_leaving.dtl",
 "f2_1": "res://timelines/f2_1.dtl",
@@ -47,6 +58,7 @@ directories/dtl_directory={
 "f2_fun": "res://timelines/f2_fun.dtl",
 "hallway": "res://timelines/hallway.dtl",
 "homeroom": "res://timelines/homeroom.dtl",
+"initialize": "res://timelines/initialize.dtl",
 "sorting_room": "res://timelines/sorting_room.dtl",
 "start_room": "res://timelines/start_room.dtl"
 }
@@ -56,10 +68,11 @@ variables={
 "cable": false,
 "diode": false,
 "done": false,
+"ending": "",
 "group_a": false,
 "group_b": false,
 "haptor": false,
-"puck": false,
+"patch": false,
 "response": "neutral",
 "siren": false,
 "talik": false,

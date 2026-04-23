@@ -1,0 +1,8 @@
+label start
+Welcome to your body!
+In order to proceed, select each component in the correct sequence to initialize.
+Remember this sequence, it's important you do.
+[end_timeline]
+label finish
+Calibration complete. Hello GN-354!
+[end_timeline]

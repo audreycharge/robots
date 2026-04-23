@@ -160,18 +160,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"walk_right"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.051501468]
-}
 
 [sub_resource type="Animation" id="Animation_evndh"]
 resource_name = "magnetize"
@@ -179,7 +167,7 @@ length = 4.633333
 
 [sub_resource type="Animation" id="Animation_h1q25"]
 resource_name = "shutdown"
-length = 4.4666667
+length = 6.0666666
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -194,15 +182,15 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.13),
+"times": PackedFloat32Array(0, 3.0666666),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.051501468, 6.283185307179586]
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_6t23p"]
@@ -345,6 +333,9 @@ offset_right = 1242.4999
 offset_bottom = 524.99994
 color = Color(0, 0, 0, 1)
 
+[node name="Timer" type="Timer" parent="." unique_id=1741097883]
+
+[connection signal="glitch_done" from="Camera2D/HUD" to="." method="_on_hud_glitch_done"]
 [connection signal="submit_code" from="Camera2D/Language" to="." method="_on_language_submit_code"]
 [connection signal="area_entered" from="talkbox" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="talkbox" to="." method="_on_talkbox_area_exited"]
