@@ -6,10 +6,120 @@
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="3_6frrs"]
 [ext_resource type="Texture2D" uid="uid://dn2a1df3i638m" path="res://assets/conveyor.png" id="5_tqetr"]
 [ext_resource type="Texture2D" uid="uid://b6hdas86mlswk" path="res://assets/sparks.png" id="6_bm21l"]
+[ext_resource type="Texture2D" uid="uid://d31j5w2eglsct" path="res://assets/trash.png" id="6_wsmxm"]
 [ext_resource type="Texture2D" uid="uid://b7jmgaehae8o0" path="res://assets/furnace.png" id="7_6yrnt"]
 [ext_resource type="Texture2D" uid="uid://dx1lugjhlnj7c" path="res://assets/vent.png" id="8_y0ier"]
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="9_we577"]
 [ext_resource type="PackedScene" uid="uid://bj25wfwi7emxf" path="res://helper_scripts/charger.tscn" id="10_ej2qn"]
+
+[sub_resource type="Animation" id="Animation_yfomk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Trak:bot_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Trak"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Trak:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(293.0001, 1192)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Trak:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-0.8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Trak:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wsmxm"]
+resource_name = "trak_broke"
+length = 7.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Trak:bot_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Trak", "Trak_broke"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Trak:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.3333333, 3.1, 3.7666664, 5.6, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(293.0001, 1192), Vector2(700, 1192), Vector2(700, 1236.7), Vector2(1700, 1236.7), Vector2(1784.76, 1050)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Trak:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5666667, 6.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.8, -0.8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Trak:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.1666665, 6.3333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfomk"]
+_data = {
+&"RESET": SubResource("Animation_yfomk"),
+&"trak_broke": SubResource("Animation_wsmxm")
+}
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bm21l"]
 polygon = PackedVector2Array(-222, 252, -224, -294, 213, -298, 228, 247, 341, 251, 343, -486, -505, -489, -501, 253)
@@ -19,6 +129,28 @@ polygon = PackedVector2Array(-775, 14, -774, 185, -532, 184, -442, 75, -440, -80
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y0ier"]
 polygon = PackedVector2Array(767, -107, 766, -27, 734, 129, 768, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsmxm"]
+atlas = ExtResource("6_wsmxm")
+region = Rect2(0, 120, 2000, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfomk"]
+atlas = ExtResource("6_wsmxm")
+region = Rect2(0, 646, 2000, 526)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57tjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsmxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfomk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6yrnt"]
 blend_mode = 1
@@ -56,6 +188,10 @@ polygon = PackedVector2Array(54, -147, -66, -34, -63, 142, -82, 162, -83, -42, 4
 [node name="sorting_room" type="Node2D" unique_id=1251005235]
 y_sort_enabled = true
 script = ExtResource("1_we577")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=156404009]
+root_node = NodePath("../Talik")
+libraries/ = SubResource("AnimationLibrary_yfomk")
 
 [node name="TestLayout" type="Sprite2D" parent="." unique_id=1487243673]
 z_index = -2
@@ -137,6 +273,16 @@ show_behind_parent = true
 position = Vector2(-16, 0)
 occluder = SubResource("OccluderPolygon2D_y0ier")
 
+[node name="trash" type="AnimatedSprite2D" parent="Conveyor" unique_id=1282057386]
+position = Vector2(53, -136)
+sprite_frames = SubResource("SpriteFrames_57tjj")
+autoplay = "default"
+frame_progress = 0.1783955
+
+[node name="Vent" type="Sprite2D" parent="Conveyor" unique_id=1867330782]
+position = Vector2(290, -141)
+texture = ExtResource("8_y0ier")
+
 [node name="sparks" type="CPUParticles2D" parent="." unique_id=573497426]
 z_index = 1
 material = SubResource("CanvasItemMaterial_6yrnt")
@@ -194,10 +340,6 @@ texture = ExtResource("7_6yrnt")
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_we577")
 
-[node name="Vent" type="Sprite2D" parent="." unique_id=1867330782]
-position = Vector2(190, 964)
-texture = ExtResource("8_y0ier")
-
 [node name="Haptor" parent="." unique_id=642781843 instance=ExtResource("9_we577")]
 position = Vector2(-323, 1178)
 bot_name = "Haptor"
@@ -215,6 +357,7 @@ talk = true
 
 [node name="Trak" parent="." unique_id=871618651 instance=ExtResource("9_we577")]
 position = Vector2(293.0001, 1192)
+scale = Vector2(-0.8, 0.8)
 bot_name = "Trak"
 talk = true
 

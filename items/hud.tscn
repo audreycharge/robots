@@ -8,16 +8,21 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy7ep"]
 bg_color = Color(1, 1, 1, 0.47843137)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djst5"]
+bg_color = Color(0.7093091, 0.9299257, 0.9999998, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acqqo"]
+bg_color = Color(0.7093091, 0.9299257, 0.9999998, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v4x5"]
-bg_color = Color(0.38431373, 0.6509804, 0.6862745, 0.16078432)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7de"]
+bg_color = Color(2.887845e-06, 0.7029628, 0.55336154, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -147,32 +152,36 @@ text = "Press E to sort"
 [node name="Button" type="Button" parent="." unique_id=1521509421]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.054
-anchor_bottom = 0.060000002
 offset_left = 43.0
 offset_top = 41.0
-offset_right = 171.32
-offset_bottom = 79.2
-text = "exit"
+offset_right = 275.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_djst5")
+text = "PAUSE"
 
 [node name="Panel" type="Panel" parent="." unique_id=589069836]
-layout_mode = 0
-offset_left = 1411.0
-offset_top = 35.0
-offset_right = 1896.0
-offset_bottom = 268.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -163.0
+offset_right = 349.0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_acqqo")
 
 [node name="PowerProgress" type="ProgressBar" parent="Panel" unique_id=1517939201]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -441.0
-offset_top = 98.0
-offset_right = -45.0
-offset_bottom = 211.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -85.0
+offset_right = 253.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_2v4x5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qy7de")
@@ -181,14 +190,14 @@ value = 8.0
 
 [node name="Temperature" type="Label" parent="Panel" unique_id=376256383]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -441.0
-offset_top = 25.0
-offset_right = -133.0
-offset_bottom = 67.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -144.0
+offset_right = 339.0
+offset_bottom = -102.0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Temperature:"
