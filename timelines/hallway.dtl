@@ -29,7 +29,7 @@ if {group_b} == true:
 	kintan: group b final words
 else:
 	Sheen: What if we make something fun like a claw machine?
-	Rote: We are claw bots. We don't even have the mobility for joy sticks.
+	Rote: We are claw bots. We barely have the mobility for joy sticks.
 	screen: But imagine! Claws squared!
 	[signal arg="respond"]
 [end_timeline]
@@ -42,8 +42,8 @@ elif {response} == "neutral":
 	green: What if you just attach another longer claw to yourself?
 	screen: Oh hey Green. Don't have materials for that but we'll keep cooking.
 else:
-	green: What are you even talking about
-	Rote: <Empty Text Event>
+	green: What are you talking about?
+	Rote: You wouldn't get it.
 set {group_b} = true
 [end_timeline]
 label group_a
@@ -58,16 +58,17 @@ else:
 label group_a_response
 if {response} == "right":
 	green: Is Beam okay?
-	gnuna: Just work problems. Don't worry about it.
-	vale: Can you let Beam know that we'll be by for the shift change?
-	green: Will do.
+	vale: Just work problems. Don't worry about it.
+	gnuna: Just let Beam know that we'll be by for the shift change.
+	green: Okay.
 elif {response} == "neutral":
 	green: Hey guys. How's everything?
 	vale: It's okay. We'll be by later for the shift change.
+	gnuna: See you later!
 else:
 	green: What are we talking about?
 	vale: It's nothing you should worry about.
-	gnuna: Yeah it's not your business.
+	green: Oh okay.
 set {group_a} = true
 [end_timeline]
 label Terminal
@@ -85,10 +86,15 @@ green: Are you okay?
 [end_timeline]
 label Trak_response
 if {response} == "right":
-	green: How car I help?
-	trak: Wow. Today must suck if you're talking that stiffly
+	green: How can I help?
+	trak: I don't need help right now. Just leave me alone.
 elif {response} == "neutral":
+	green: ...
 else:
-green: last words
+	green: asdfghjk
+	trak: Now's not a good time, Green.
+trak: What about you?
+trak: you've been doing nothing but avoid everyone. Just because you
+bro please touch grass
 [signal arg="final"]
 [end_timeline]

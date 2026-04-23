@@ -14,7 +14,7 @@ var player_info: Dictionary = {}
 var sort_complete = false;
 var shift = 1;
 var break_talks = 0;
-var you_break = false
+var you_break = true
 var trak_break = false
 
 
@@ -140,14 +140,20 @@ func increment_p(n):
 func increment_n(n):
 	player_info["n_score"] += n
 	
-func get_score():
+func get_score() -> String:
 	var p_score = player_info["p_score"]
 	var n_score = player_info["n_score"]
-	if p_score !=0 or n_score !=0:
-		return p_score/n_score;
+	if p_score !=0 and n_score !=0:
+		var result = p_score/n_score;
+		if result < 0.5:
+			return "darn"
+		else:
+			return "yay"
 	elif p_score == 0 and n_score == 0:
 		Dialogic.VAR.ending = "avoid"
-		return "you can't avoid your way into a better life";
+		return "avoid";
+	else:
+		return "huh"
 	
 #func on_low_battery():
 	#player.hu

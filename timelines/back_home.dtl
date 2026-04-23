@@ -1,4 +1,14 @@
+label avoid
 cable: Green! Tell me if you can hear me!
 diode: Give it some space, Cable. We know you're worried.
+cable: Of course I'm worried! Green's shut down worse and no one told us for two hours!
 siren: How are you feeling, Green?
+green: <Empty Text Event>
 [signal arg="final"]
+[end_timeline]
+label yay
+cable: Green! Tell me if you can hear me!
+diode: Give it some space, Cable. We know you're worried.
+<Empty Text Event>
+[signal arg="final"]
+[end_timeline]
