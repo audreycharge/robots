@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bv2ofua7bg3vv" path="res://locations/hallway.gd" id="1_l7oox"]
 [ext_resource type="Texture2D" uid="uid://ci48ggvtr6xyp" path="res://assets/door.png" id="3_bgp74"]
 [ext_resource type="PackedScene" uid="uid://dhot2q7syfm7b" path="res://helper_scripts/scene_trigger.tscn" id="4_dgtn4"]
-[ext_resource type="Texture2D" uid="uid://dtet6n45n4pfn" path="res://assets/frontdoor.png" id="5_0vc41"]
+[ext_resource type="Texture2D" uid="uid://beq5fxhshb1xo" path="res://assets/sidedoor.png" id="4_l7oox"]
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="7_2w4lw"]
 [ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="7_8mmyn"]
 [ext_resource type="Texture2D" uid="uid://b7xuq515ob52w" path="res://assets/rustdoor.png" id="8_8mmyn"]
@@ -27,6 +27,67 @@ height = 370.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikm1t"]
 size = Vector2(468, 540)
+
+[sub_resource type="Animation" id="Animation_ikm1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("group_a/Beam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-141, 489)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("group_a/Beam:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l7oox"]
+resource_name = "beam_leaves"
+length = 11.466666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("group_a/Beam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 10.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-141, 489), Vector2(-141, 489), Vector2(-141, 489), Vector2(6000, 489)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("group_a/Beam:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(8.7, 10.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikm1t"]
+_data = {
+&"RESET": SubResource("Animation_ikm1t"),
+&"beam_leaves": SubResource("Animation_l7oox")
+}
 
 [node name="hallway" type="Node2D" unique_id=1892908119]
 y_sort_enabled = true
@@ -60,8 +121,8 @@ texture = ExtResource("3_bgp74")
 [node name="sort_entrance" type="Sprite2D" parent="." unique_id=2107782238]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(655, 538)
-texture = ExtResource("5_0vc41")
+position = Vector2(1909, 356)
+texture = ExtResource("4_l7oox")
 offset = Vector2(0, -200)
 
 [node name="EntranceMarkers" type="Node2D" parent="." unique_id=1511272359]
@@ -70,7 +131,7 @@ offset = Vector2(0, -200)
 position = Vector2(-1820, 411)
 
 [node name="sorting_room" type="Marker2D" parent="EntranceMarkers" unique_id=367245150]
-position = Vector2(661, 409)
+position = Vector2(1644, 451)
 
 [node name="init_room" type="Marker2D" parent="EntranceMarkers" unique_id=880657337]
 position = Vector2(280, -40)
@@ -87,7 +148,7 @@ scale = Vector2(1, -1)
 connected_scene = "homeroom"
 
 [node name="sorting_room" parent="." unique_id=1934322074 instance=ExtResource("4_dgtn4")]
-position = Vector2(664, 585)
+position = Vector2(1827, 439)
 rotation = 3.1415925
 scale = Vector2(1, -1)
 connected_scene = "sorting_room"
@@ -209,3 +270,6 @@ shape = SubResource("RectangleShape2D_ikm1t")
 visible = false
 position = Vector2(-612, 378)
 bot_name = "Trak_broken"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1387237522]
+libraries/ = SubResource("AnimationLibrary_ikm1t")

@@ -120,9 +120,9 @@ autostart = true
 wait_time = 60.0
 
 [node name="Panel" type="Panel" parent="." unique_id=1371707711]
-offset_left = 37.0
+offset_left = 1399.0
 offset_top = 718.0
-offset_right = 516.0
+offset_right = 1878.0
 offset_bottom = 996.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=757883282]

@@ -1,6 +1,7 @@
 {
 	"Siren": {
 		"array": ["circle", "circle", "circle", "square", "square"],
+		"alt_answer": ["circle", "circle", "circle", "square", "square"],
 		"tolerance": 3,
 		"interaction_points": 0
 	},

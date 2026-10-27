@@ -217,7 +217,7 @@ y_sort_enabled = true
 position = Vector2(-13.333313, -239.99988)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_651wn")
-animation = &"Trak_broken"
+animation = &"Talik"
 
 [node name="floor" type="CollisionShape2D" parent="." unique_id=889298794]
 position = Vector2(-4.333309, -38.99993)

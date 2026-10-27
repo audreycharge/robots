@@ -3,6 +3,7 @@ extends Area2D
 var magnetized = false
 var load = 1;
 const MAX_LOAD = 4;
+@onready var sprite = $"../magnet_sprite"
 
 signal overpowered;
 signal lower;
@@ -10,6 +11,7 @@ signal magnetizedSignal;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	sprite.visible = false
 	pass # Replace with function body.
 
 
@@ -27,24 +29,33 @@ func _process(delta: float) -> void:
 
 func reset():
 	magnetized = false
+	sprite.visible = false;
 	load = 1
 	print_debug("magnets off")
 	scene_manager.temp.get_node("heatup").stop()
 
 func _on_body_entered(body: Node2D) -> void:
 	print_debug(body)
+	
+func magnet_on():
+	sprite.visible = true;
+	scene_manager.temp.get_node("heatup").start()
+	scene_manager.temp.cooldown = false;
+	magnetizedSignal.emit()
+	
+func magnet_off():
+	sprite.visible = false;
+	scene_manager.temp.get_node("heatup").stop()
+	if scene_manager.temp.sent:
+		scene_manager.temp.init_cooldown()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("magnetize"):
 		magnetized = !magnetized
 		if magnetized:
-			scene_manager.temp.get_node("heatup").start()
-			scene_manager.temp.cooldown = false;
-			magnetizedSignal.emit()
+			magnet_on()
 		else:
-			scene_manager.temp.get_node("heatup").stop()
-			if scene_manager.temp.sent:
-				scene_manager.temp.init_cooldown()
+			magnet_off()
 	if event.is_action_pressed("load_up") and load < MAX_LOAD:
 		load+= 1
 		scene_manager.temp.get_node("heatup").wait_time = 2/load
@@ -57,3 +68,4 @@ func _input(event: InputEvent) -> void:
 		print_debug(load)
 	elif event.is_action_pressed("load_down"):
 		lower.emit();
+	sprite.animation = str(load)

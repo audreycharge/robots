@@ -51,4 +51,4 @@ func _on_dialogic_signal(arg: String):
 
 func _on_break_trak() -> void:
 	anim_player.play("trak_broke")
-	Dialogic.play("sorting_room", "trak_broke")
+	Dialogic.start("sorting_room", "trak_broke")

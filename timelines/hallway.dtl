@@ -52,6 +52,7 @@ if {group_a} == true:
 else:
 	beam: ...so smug! You should've seen how Green shrugged me off.
 	beam: I need Haptor to stop comparing us, like I need to be reminded...
+	[signal arg="beam leaves"]
 	beam: ...Talk to you later. I gotta go to my shift.
 	[signal arg="respond"]
 [end_timeline]
@@ -81,20 +82,35 @@ label Locked Door
 It’s rusting at the edges, which is weird because there’s no oxygen here anymore.
 [end_timeline]
 label Trak
-green: Are you okay?
 [signal arg="respond"]
 [end_timeline]
 label Trak_response
 if {response} == "right":
 	green: How can I help?
-	trak: I don't need help right now. Just leave me alone.
+	trak: I'm okay. You don't have to stay here.
+	green: Nope, I'm sitting here.
+	trak: Oh okay.
 elif {response} == "neutral":
 	green: ...
+	trak: ...
+	green: Let's get you home.
 else:
-	green: asdfghjk
-	trak: Now's not a good time, Green.
-trak: What about you?
-trak: you've been doing nothing but avoid everyone. Just because you
-bro please touch grass
+	green: I can realign whatever's inside with my magnets.
+	trak: You know your magnets aren't good enough for that.
+	green: Ouch. Worth a try.
+trak: ...
+trak: You've been talking less than when you first started here.
+green: Let's not talk about that. It feels like calling for rand() on a good day
+trak: How else would I find quality entertainment?
+trak: Big hits such as\: Why do your arms have smaller arms?
+green: I didn't even realize there was a difference to begin with until Patch pointed at my magnets and told me to climb a wall.
+[signal arg="trak_restore"]
+trak: Not like anyone could except for the really old magnet bots.
+green: I need a software reprogramming. For better communication analysis or something.
+trak: I'm not sure if that's even possible. I just need a hardware upgrade if anything.
+trak: At least it wasn't the insane rush like when the humans were still around. One of my network mates were functioning then and it said its humans were really bad at maintaining their bots.
+trak: At least we got each other right? Basement solidarity!
+green: That sounds so bad!
+green: But yeah. We got something.
 [signal arg="final"]
 [end_timeline]

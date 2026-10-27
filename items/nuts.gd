@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	move_and_slide()
 	#velocity.x = -300
-	if attracted or sorted:
+	if attracted or sorted or scene_manager.pause:
 		velocity = Vector2(0,0)
 	else:
 		velocity = Vector2(-300, 0)

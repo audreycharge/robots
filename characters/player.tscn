@@ -53,7 +53,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eho78")
 }],
-"loop": true,
+"loop": 1,
 "name": &"booting",
 "speed": 5.0
 }, {
@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x0jl3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_left",
 "speed": 5.0
 }, {
@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h1q25")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_right",
 "speed": 5.0
 }, {
@@ -77,12 +77,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8sqrr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"shutdown",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"talking",
 "speed": 5.0
 }, {
@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vcag3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wakeup",
 "speed": 5.0
 }, {
@@ -104,7 +104,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6t23p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_left",
 "speed": 6.0
 }, {
@@ -115,7 +115,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q605b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_right",
 "speed": 6.0
 }]
@@ -229,6 +229,57 @@ _data = {
 &"wakeup": SubResource("Animation_6t23p")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rrl0"]
+atlas = ExtResource("3_h1q25")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h076o"]
+atlas = ExtResource("3_h1q25")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcfw7"]
+atlas = ExtResource("3_h1q25")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0vde"]
+atlas = ExtResource("3_h1q25")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0vde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rrl0")
+}],
+"loop": 1,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h076o")
+}],
+"loop": 1,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcfw7")
+}],
+"loop": 1,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0vde")
+}],
+"loop": 1,
+"name": &"4",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1018792434]
 y_sort_enabled = true
 scale = Vector2(0.8, 0.8)
@@ -334,6 +385,12 @@ offset_bottom = 524.99994
 color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=1741097883]
+
+[node name="magnet_sprite" type="AnimatedSprite2D" parent="." unique_id=1368850914]
+position = Vector2(172.5, -238.75)
+scale = Vector2(1.9160156, 1.9160156)
+sprite_frames = SubResource("SpriteFrames_b0vde")
+animation = &"4"
 
 [connection signal="glitch_done" from="Camera2D/HUD" to="." method="_on_hud_glitch_done"]
 [connection signal="submit_code" from="Camera2D/Language" to="." method="_on_language_submit_code"]

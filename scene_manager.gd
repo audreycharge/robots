@@ -2,6 +2,7 @@ class_name SceneManager extends Node
 
 var player: Player
 var last_scene_name: String
+var pause = false;
 
 var scene_dir_path = "res://locations/"
 var game_dir_path = "res://games/"
@@ -12,9 +13,9 @@ var player_json = "res://helper_scripts/player.json"
 var response_codes: Dictionary = {}
 var player_info: Dictionary = {}
 var sort_complete = false;
-var shift = 1;
+var shift = 0;
 var break_talks = 0;
-var you_break = true
+var you_break = false
 var trak_break = false
 
 
@@ -34,9 +35,6 @@ func _ready() -> void:
 	#power.depleted.connect(on_low_battery)
 	response_codes = load_json_file(ling_json)
 	player_info = load_json_file(player_json)
-	#load_player_file()
-	#print_debug(response_codes.get("siren").array)
-	pass # Replace with function body.
 
 func update_player_file():
 	var json_string = JSON.stringify(player_info, "\t")
@@ -57,6 +55,12 @@ func load_player_file():
 	
 	return player_info;
 	
+func reset():
+	reset_levels();
+	you_break = false;
+	trak_break =false;
+	shift = 0;
+	break_talks = 0;
 
 func load_json_file(json_file):
 	#open file for reading
@@ -76,6 +80,7 @@ func load_json_file(json_file):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print_debug(player)
 	pass
 	
 func compare_codes(submitted, partner):

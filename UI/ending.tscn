@@ -18,13 +18,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.5
-offset_top = -11.5
-offset_right = 112.5
-offset_bottom = 11.5
+offset_left = -579.5
+offset_top = -138.5
+offset_right = 579.5
+offset_bottom = 138.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
-text = "Thanks for playing the demo!
+text = "Thanks for playing the demo! 
+
+This proof of concept is made by Audrey Chung for their Master's Project for Spring 2026. Thank you to my committee members: Ryan Scheiding, Richmond Wong, and Andre Brock for your support throughout the project.
+And thanks to the GamePad Lab and my friends for the feedback through every iteration so far!
+
 (Click to leave)"
 horizontal_alignment = 1
+autowrap_mode = 3

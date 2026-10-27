@@ -1,24 +1,26 @@
 label Siren
 if {done} == true:
-	jump calibration/last
+	siren: Do you see that pile of metal behind you? Pick up as many as you can, and bring them over to me.
 else:
-	siren: ...an you not hear me?
+	siren: ...an you hear me?
+	green: Wuh?
 	siren: Can you tell me your ID number?
-	green: GN-354
+	green: My terminal designated me GN-354
 	siren: Hello GN-354! I'm SN-274, your direct supervisor and network mate.
-	siren: You may call me Siren.
+	siren: You may call me Siren, and you'll have your own name too.
+	siren: Before you answer that, you know that miscommunications happen sometimes.
 	[signal arg="respond"]
 	[end_timeline]
 	label Siren_response
 	if {response} == "right":
-		green: Hello!
-		siren: So polite!
+		green: Why Siren?
+		siren: Haha erm.. That's something you should ask Diode about.
 	elif {response} == "neutral":
-		green: Hi.
-		siren: It's nice to meet you!
+		green: Oh okay.
+		siren: You'll think of one eventually. Otherwise someone might pick one for you!
 	else:
-		green: ...
-		siren: Don't be shy!
+		green: Like right now?
+		siren: If you think of one, absolutely!
 	siren: Let's start with some calibration tests. I'm sure your knowledge base has already supplied you-
 	green: my what?
 	siren: -with all of the relevant information on who we are and what we do here!

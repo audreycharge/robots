@@ -89,6 +89,9 @@ shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83vhb"]
+bg_color = Color(0, 0, 0, 0.7372549)
+
 [node name="HUD" type="Control" unique_id=2048183109]
 z_index = 2
 layout_mode = 3
@@ -115,17 +118,17 @@ theme_override_font_sizes/font_size = 30
 text = "Press E to talk"
 
 [node name="instructions" type="Label" parent="." unique_id=584158992]
-visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -329.0
-offset_top = 925.0
+offset_top = -102.0
 offset_right = 329.0
-offset_bottom = -58.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_vy7ep")
@@ -166,8 +169,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -163.0
-offset_right = 349.0
+offset_top = -169.0
+offset_right = 402.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_acqqo")
 
@@ -176,17 +179,31 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = -85.0
-offset_right = 253.0
-offset_bottom = -30.0
+offset_left = 153.0
+offset_top = -145.0
+offset_right = 375.0
+offset_bottom = -90.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_2v4x5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qy7de")
 step = 1.0
-value = 8.0
+value = 80.0
+
+[node name="Battery" type="Label" parent="Panel" unique_id=496961650]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -139.0
+offset_right = 138.0
+offset_bottom = -97.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Battery"
 
 [node name="Temperature" type="Label" parent="Panel" unique_id=376256383]
 layout_mode = 1
@@ -194,9 +211,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 31.0
-offset_top = -144.0
+offset_top = -60.0
 offset_right = 339.0
-offset_bottom = -102.0
+offset_bottom = -18.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -229,11 +246,38 @@ icon = ExtResource("2_2v4x5")
 layout_mode = 2
 icon = ExtResource("2_2v4x5")
 
-[node name="Overheating" type="Sprite2D" parent="." unique_id=1407208107]
+[node name="Overheating" type="TextureRect" parent="." unique_id=1070004109]
 visible = false
-position = Vector2(1028, 518)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.99994
+offset_top = -346.99997
+offset_right = 36.00006
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.8479452, 1.8479452)
 texture = ExtResource("3_2v4x5")
+
+[node name="Label" type="Label" parent="Overheating" unique_id=1886245105]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -49.0
+offset_right = 194.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "YOU ARE OVERHEATING. 
+PLEASE TURN OFF ALL NONESSENTIAL FUNCTIONS"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=487658350]
 libraries/ = SubResource("AnimationLibrary_vy7ep")
@@ -324,6 +368,9 @@ text = "Resume"
 layout_mode = 2
 text = "Exit"
 
+[node name="Controls" type="Button" parent="pause/pause/HBoxContainer" unique_id=1714866762]
+layout_mode = 2
+
 [node name="Timer" type="Timer" parent="." unique_id=414756665]
 wait_time = 4.0
 one_shot = true
@@ -338,6 +385,56 @@ offset_top = -27.0
 offset_right = 1988.0
 offset_bottom = 1114.0
 
+[node name="logs" type="Button" parent="." unique_id=786010942]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 42.0
+offset_right = -42.0
+offset_bottom = 111.0
+grow_horizontal = 0
+text = "logs"
+
+[node name="controls" type="PanelContainer" parent="." unique_id=1463280625]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.0
+offset_top = -347.0
+offset_right = 608.0
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="error" type="Label" parent="." unique_id=278253704]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -19.5
+offset_right = 143.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_83vhb")
+text = "This feature is not available yet."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="error" type="Timer" parent="error" unique_id=1503025625]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="stop_sort/stop_sort/HBoxContainer/yes" to="." method="_on_yes_button_down"]
 [connection signal="button_down" from="stop_sort/stop_sort/HBoxContainer/no" to="." method="_on_no_button_down"]
@@ -345,3 +442,5 @@ offset_bottom = 1114.0
 [connection signal="button_down" from="pause/pause/HBoxContainer/Resume" to="." method="_on_resume_button_down"]
 [connection signal="button_down" from="pause/pause/HBoxContainer/Exit" to="." method="_on_exit_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="logs" to="." method="_on_logs_button_down"]
+[connection signal="timeout" from="error/error" to="." method="_on_error_timeout"]

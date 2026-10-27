@@ -24,13 +24,14 @@ func _process(delta: float) -> void:
 	time += delta;
 	
 	if time > PERIOD:
-		var new_nut = nut.instantiate()
-		var new_scrap = scrap.instantiate()
-		new_scrap.position = Vector2(2200, randf_range(30, 540))
-		new_nut.position.x = 2000
-		new_nut.position.y = randf_range(30, 540)
-		add_child(new_nut)
-		add_child(new_scrap)
+		if !scene_manager.pause:
+			var new_nut = nut.instantiate()
+			var new_scrap = scrap.instantiate()
+			new_scrap.position = Vector2(2200, randf_range(30, 540))
+			new_nut.position.x = 2000
+			new_nut.position.y = randf_range(30, 540)
+			add_child(new_nut)
+			add_child(new_scrap)
 		time = 0;
 	
 	

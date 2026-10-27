@@ -7,6 +7,10 @@ var parent
 var scene
 @onready var exitButton = $Button
 @onready var glitch_timer = $Timer
+@onready var power_label: ProgressBar = $Panel/PowerProgress
+@onready var temp_label = $Panel/Temperature
+@onready var error_label = $error
+var celsius = true;
 
 signal glitch_done
 
@@ -28,6 +32,7 @@ func _ready() -> void:
 	power.depleted.connect(on_low_battery)
 	temperature.overheating.connect(on_overheat)
 	temperature.cooled.connect(on_cooled)
+	$instructions.visible = false;
 	
 	pass # Replace with function body.
 
@@ -35,8 +40,22 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#var power_amount = power
-	$Panel/PowerProgress.value = power.power
-	$Panel/Temperature.text = str("Temperature: ", temperature.temp)
+	power_label.value = power.power
+	var stylebox = power_label.get_theme_stylebox("fill")
+	if power.power < 15:
+		#var red = power_label.get_theme_stylebox_override()
+		stylebox.set("bg_color", Color(1, 0.5, 0))
+		#power_label.add_theme_stylebox_override("fill",stylebox)
+		#power_label.add_theme_color_override("fill", Color(1, 0.5, 0))
+	else: 
+		stylebox.set("bg_color", Color(0.29, 0.741, 0.705, 1.0))
+	power_label.add_theme_stylebox_override("fill", stylebox)
+	if celsius:
+		temp_label.text = str("Temperature: ", temperature.temp, "℃")
+	else:
+		var far = temperature.temp /5*9 +32
+		temp_label.text = str("Temperature: ", far, "℉")
+	
 	#if power.charging:
 		#$PowerProgress.add_theme_stylebox_override()
 	
@@ -64,6 +83,7 @@ func reset():
 
 
 func _on_button_button_down() -> void:
+	scene_manager.pause = true
 	if parent is Camera2D:
 		$pause.visible = true;
 		parent.get_parent().state_machine = "paused"
@@ -79,10 +99,12 @@ func _on_yes_button_down() -> void:
 	scene_manager.return_to_scene(parent, "sorting_room")
 	if get_parent().complete:
 		scene_manager.shift +=1;
+		print_debug("shift done")
 
 
 func _on_no_button_down() -> void:
 	$stop_sort.visible = false;
+	scene_manager.pause = false
 
 
 func _on_restart_button_down() -> void:
@@ -93,6 +115,7 @@ func _on_restart_button_down() -> void:
 func _on_resume_button_down() -> void:
 	$pause.visible = false;
 	parent.get_parent().state_machine = "moving"
+	scene_manager.pause = false
 	pass # Replace with function body.
 
 
@@ -119,3 +142,23 @@ func _on_timer_timeout() -> void:
 		scene_manager.player.reset()
 		scene_manager.return_to_scene(parent, "sorting_room")
 		scene_manager.you_break = true;
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc"):
+		_on_button_button_down()
+	if event.is_action_pressed("tab"):
+		pass
+
+
+func show_error_label():
+	error_label.visible = true;
+	error_label.get_node("error").start()
+	
+
+
+func _on_error_timeout() -> void:
+	error_label.visible = false;
+
+
+func _on_logs_button_down() -> void:
+	show_error_label()

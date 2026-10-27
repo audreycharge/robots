@@ -1,7 +1,7 @@
 extends BaseScene
 
 @onready var trak = $Trak_broken
-
+@onready var anim_player = $AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print_debug("room2")
@@ -23,7 +23,14 @@ func init_hall_2():
 	trak.bot_name = "Trak"
 	trak.name = "Trak"
 	trak.talk = true;
+	$group_a.visible = false
 	
 func on_ended(arg: String):
 	if arg == "final":
 		scene_manager.go_to_ui(self, "ending");
+	elif arg == "beam leaves":
+		print_debug("leave")
+		anim_player.play("beam_leaves")
+	elif arg == "trak_restore":
+		trak.sprite.animation = "Trak"
+		

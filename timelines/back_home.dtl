@@ -3,12 +3,26 @@ cable: Green! Tell me if you can hear me!
 diode: Give it some space, Cable. We know you're worried.
 cable: Of course I'm worried! Green's shut down worse and no one told us for two hours!
 siren: How are you feeling, Green?
-green: <Empty Text Event>
-[signal arg="final"]
+green: ...
+green: I'm fine.
+cable: No you're not. Try again.
+green: Okay I'm not fine. Is that what you wanted to hear?
+green: I'm getting the feeling that the other magnet bots are just tolerating me. I know Siren said the most important robots are the ones we have in common with. Because it's easier to understand.
+jump final
 [end_timeline]
 label yay
 cable: Green! Tell me if you can hear me!
 diode: Give it some space, Cable. We know you're worried.
-<Empty Text Event>
+green: I don't know if I can do this again.
+siren: Do what?
+green: Everything? I don't know.
+label final
+diode: We've been talking for a while. And we think you need a change of pace.
+cable: I'm taking you to a different floor. Show you what else is out there.
+green: Wait why?
+siren: You don't know much about Hijo, or what we used to be. Granted, I don't know that much either.
+green: I thought we're recycling bots?
+siren: That's a job we happened to be good at. But no.
+cable: So what do you think?
 [signal arg="final"]
 [end_timeline]

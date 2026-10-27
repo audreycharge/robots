@@ -51,10 +51,28 @@ position = Vector2(1251.0001, 1379)
 position = Vector2(2121, 1375)
 
 [node name="junk" parent="." unique_id=989283492 instance=ExtResource("7_0dp22")]
-position = Vector2(1964, 1383)
+position = Vector2(1941, 1408)
+
+[node name="junk4" parent="." unique_id=151844677 instance=ExtResource("7_0dp22")]
+position = Vector2(1866, 1428)
+
+[node name="junk5" parent="." unique_id=878473479 instance=ExtResource("7_0dp22")]
+position = Vector2(2004, 1450)
+
+[node name="junk6" parent="." unique_id=1594041750 instance=ExtResource("7_0dp22")]
+position = Vector2(1821, 1486)
+
+[node name="junk7" parent="." unique_id=1412735081 instance=ExtResource("7_0dp22")]
+position = Vector2(1937, 1504)
+
+[node name="junk8" parent="." unique_id=1746555725 instance=ExtResource("7_0dp22")]
+position = Vector2(1885, 1483)
+
+[node name="junk9" parent="." unique_id=522821929 instance=ExtResource("7_0dp22")]
+position = Vector2(1816, 1398)
 
 [node name="junk3" parent="." unique_id=723844103 instance=ExtResource("7_0dp22")]
-position = Vector2(1804, 1499)
+position = Vector2(1774, 1452)
 
 [node name="junk2" parent="." unique_id=802691755 instance=ExtResource("7_0dp22")]
 position = Vector2(1957, 1478)

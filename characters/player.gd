@@ -61,26 +61,26 @@ func _process(delta: float) -> void:
 			get_node("Camera2D/HUD/talk").visible = true
 			interactable = true
 			dialoging = i.get_parent().name
-			get_node("Camera2D/HUD/talk").text = str("E -> Talk to ", dialoging)
+			get_node("Camera2D/HUD/talk").text = str("SPACE -> Talk to ", dialoging)
 			break;
 		elif i.is_in_group("robot") and i.name != "Area2D":
 			get_node("Camera2D/HUD/talk").visible = true
 			interactable = true
 			dialoging = i.name
-			get_node("Camera2D/HUD/talk").text = str("E -> Talk to ", dialoging)
+			get_node("Camera2D/HUD/talk").text = str("SPACE -> Talk to ", dialoging)
 			break;
 		elif i.is_in_group("snoop"):
 			get_node("Camera2D/HUD/talk").visible = true
 			dialoging = "ceiling"
-			get_node("Camera2D/HUD/talk").text = "E -> Listen"
+			get_node("Camera2D/HUD/talk").text = "SPACE -> Listen"
 		elif i.get_parent().is_in_group("sorting"):
 			get_node("Camera2D/HUD/talk").visible = true
-			get_node("Camera2D/HUD/talk").text = "E -> Sort"
+			get_node("Camera2D/HUD/talk").text = "SPACE -> Sort"
 			dialoging = "sorting"
 		elif i.get_parent().is_in_group("item"):
 			get_node("Camera2D/HUD/talk").visible = true
 			dialoging = i.get_parent()
-			get_node("Camera2D/HUD/talk").text = str("E -> ", dialoging.name)
+			get_node("Camera2D/HUD/talk").text = str("SPACE -> ", dialoging.name)
 			
 	
 
@@ -96,30 +96,32 @@ func reset():
 	$AnimationPlayer.stop()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and interactable:
-		state_machine = "talking"
-		interactable = false
-		if dialoging != "":
-			#print_debug(Dialogic.VAR.response)
-			#print_debug(get_parent().name)
-			if !Dialogic.VAR.work:
-				Dialogic.start(get_parent().name, dialoging)
-				print_debug(dialoging)
-			else:
-				Dialogic.start(get_parent().name, "work")
-	elif event.is_action_pressed("interact"):
-		if typeof(dialoging) == TYPE_STRING:
-			if dialoging == "ceiling":
-				state_machine = "talking"
-				Dialogic.start(get_parent().name, dialoging);
-			elif dialoging == "sorting":
-				state_machine = "sorting"
-				#print_debug("do your job")
-				scene_manager.go_to_minigame(get_parent(), dialoging)
-		elif dialoging.is_in_group("item"):
+	if !Dialogic.current_timeline:
+		if event.is_action_pressed("interact") and interactable:
 			state_machine = "talking"
-			Dialogic.start(get_parent().name, dialoging.name)
-		
+			interactable = false
+			if dialoging != "":
+				#print_debug(Dialogic.VAR.response)
+				#print_debug(get_parent().name)
+				if !Dialogic.VAR.work:
+					Dialogic.start(get_parent().name, dialoging)
+					print_debug(dialoging)
+				else:
+					Dialogic.start(get_parent().name, "work")
+		elif event.is_action_pressed("interact"):
+			if typeof(dialoging) == TYPE_NIL:
+				return
+			if typeof(dialoging) == TYPE_STRING:
+				if dialoging == "ceiling":
+					state_machine = "talking"
+					Dialogic.start(get_parent().name, dialoging);
+				elif dialoging == "sorting":
+					state_machine = "sorting"
+					#print_debug("do your job")
+					scene_manager.go_to_minigame(get_parent(), dialoging)
+			elif dialoging.is_in_group("item"):
+				state_machine = "talking"
+				Dialogic.start(get_parent().name, dialoging.name)
 		
 func get_dialogue(location: String, context: String):
 	var layout = Dialogic.start(location, context)
@@ -178,7 +180,7 @@ func _on_dialogic_signal(argument: String):
 
 func _on_timeline_ended():
 	if !language.visible and state_machine == "talking":
-		state_machine = "moving"
+		state_machine = "moving";
 
 
 func _on_language_submit_code(code) -> void:

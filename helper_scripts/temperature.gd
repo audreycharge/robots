@@ -34,7 +34,7 @@ func reset():
 	sent = false
 
 func _on_cooldown_timeout() -> void:
-	if cooldown:
+	if cooldown and !scene_manager.pause:
 		temp -= 1;
 	
 func init_cooldown():

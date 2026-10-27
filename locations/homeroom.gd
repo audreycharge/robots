@@ -5,6 +5,7 @@ extends BaseScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print_debug("room2")
+	player.get_node("Camera2D/HUD/instructions").visible = false;
 	super()
 	if scene_manager.you_break:
 		player.dialoging = scene_manager.get_score()

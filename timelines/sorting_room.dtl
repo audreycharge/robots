@@ -8,12 +8,13 @@ else:
 label Haptor_response
 set {haptor} = true
 if {response} == "right":
-	green: Hello! Just about to start.
+	green: Just about to start.
 	haptor: You better not be sneaking those pieces out. I know what you're like.
 elif {response} == "neutral":
 	green: I'm doing it now.
-	haptor: Repeat what you just said.
+	haptor: Say it again but nicer.
 	green: I'm doing it now?
+	haptor: that's better.
 else:
 	green: Sorry, Haptor.
 	haptor: You see that, Beam? So polite.
@@ -22,41 +23,65 @@ label Trak
 if {trak} == true:
 	trak: Give me a few more minutes.
 else:
-	<Empty Text Event>
+	trak: Oh, hi Green!
 	[signal arg="respond"]
 [end_timeline]
 label Trak_response
 if {response} == "right":
+	green: Thanks for helping me the other day. I put the horse up on a shelf, and only Cable grumbled about it.
+	trak: Nice!
 elif {response} == "neutral":
+	green: How's it going?
+	trak: I'm feeling pretty green.
+	green: ...This name was a mistake.
+	trak: No wait! I take it back. Green!
+	green: I'm kidding! It's not the most original name to pick.
 else:
+	green: How are you today?
+	trak: My arms are a bit flimsier today for some reason. But it's probably nothing.
+	green: Okay. Try not to overdo it?
+trak: Haptor's glaring at me. Gotta go.
 set {trak} = true
 [end_timeline]
 label Talik
 if {talik} == true:
+	Talik seems to be busy.
 else:
-	talik: Hey, Green! How's it going?
+	green: Talik! How's work going?
+	talik: It's okay! I'm planning to go on break later if you want to join me. We can go kick stones up the elevator.
 	[signal arg="respond"]
 [end_timeline]
 label Talik_response
 if {response} == "right":
-	green: It's okay
+	green: I would love to, but I already got in trouble with Siren for looking at it weird.
+	green: What's so important about that elevator anyway?
+	talik: Sometimes I get responding rocks from other floors. I'm gonna figure out how to communicate without that stupid terminal.
 elif {response} == "neutral":
 	green: Mm.
-	talik: <Empty Text Event>
+	talik: I'm guessing that's a no? Are your magnets breaking again?
+	green: They're fine! Diode says I just need to manage it better.
 else:
-	<Empty Text Event>
+	green: I can't do today again unfortunately.
+	talik: That's fine! One of these days, I'll get you to hang out with me.
 set {talik} = true
 [end_timeline]
 label Beam
 if {beam} == true:
+	Beam looks focused on its work.
 else:
+	beam: What do you want?
 	[signal arg="respond"]
 [end_timeline]
 label Beam_response
 if {response} == "right":
-	beam right
+	green: Nothing! I just wanted to check on you. You look upset earlier.
+	beam: I'm fine now. Don't worry about it.
 elif {response} == "neutral":
+	green: Your friends wanted me to let you know they’re picking up the shift after us.
+	beam: Oh. Thanks. Guess I'll have nothing to do after work.
 else:
+	green: Sorry, I'll leave you alone.
+	beam: ...
 set {beam} = true
 [end_timeline]
 label work

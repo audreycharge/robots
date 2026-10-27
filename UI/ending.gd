@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
+		Dialogic.VAR.reset()
+		scene_manager.reset()
 		get_tree().call_deferred('change_scene_to_file', "res://UI/main_menu.tscn")

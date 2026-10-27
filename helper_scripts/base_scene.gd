@@ -5,10 +5,13 @@ class_name BaseScene extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if scene_manager.player:
+		print_debug(scene_manager.player)
 		if player:
 			player.queue_free()
 		player = scene_manager.player
 		add_child(player)
+	else:
+		print_debug("player not stored")
 	position_player()
 	var full_path = str("res://locations/", name, ".tscn")
 	scene_manager.player_info["location"] = full_path

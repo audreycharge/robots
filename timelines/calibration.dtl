@@ -1,14 +1,15 @@
 siren: Starting calibration tests\:
 label last
 set {done} = true
-siren: Do you see that pile of metal behind you? Pick up any metal with your magnets.
+siren: Do you see that pile of metal behind you? Pick up as many as you can, and bring them over to me.
 [signal arg="calibrate_magnet"]
 [end_timeline]
 label overpowered (overpowered)
-siren: Too big! Too big! Lower it!
-[end_timeline]
-label lower
-siren: A large burst happens sometimes. You need to be able to control it.
+green: I feel really hot for some reason...
+siren: Turn your magnets off now!
+[wait time="3.0"]
+siren: That happened so fast! Your limits are really low.
+siren: We need to shut you down for repairs.
 [signal arg="overheat"]
-green: I.. need... what?
+green: We.. need... what?
 [end_timeline]

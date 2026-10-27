@@ -17,6 +17,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if scene_manager.pause:
+		$Parallax2D.autoscroll = Vector2(0,0)
+	else:
+		$Parallax2D.autoscroll = Vector2(-300,0)
 	array = box.get_overlapping_areas().map(get_anim)
 	count = [0,0,0,0]
 	#print(array)

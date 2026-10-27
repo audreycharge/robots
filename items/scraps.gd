@@ -11,6 +11,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(-300, 0)
+	if scene_manager.pause:
+		velocity = Vector2(0, 0)
+	else:
+		velocity = Vector2(-300, 0)
 
 	move_and_slide()

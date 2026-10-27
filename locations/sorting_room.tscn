@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dx1lugjhlnj7c" path="res://assets/vent.png" id="8_y0ier"]
 [ext_resource type="PackedScene" uid="uid://rr2n84s1rqst" path="res://helper_scripts/basebot.tscn" id="9_we577"]
 [ext_resource type="PackedScene" uid="uid://bj25wfwi7emxf" path="res://helper_scripts/charger.tscn" id="10_ej2qn"]
+[ext_resource type="Texture2D" uid="uid://83wf12gkjr5j" path="res://assets/tilesheet.png" id="12_yfomk"]
 
 [sub_resource type="Animation" id="Animation_yfomk"]
 length = 0.001
@@ -184,6 +185,10 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_we577"]
 polygon = PackedVector2Array(54, -147, -66, -34, -63, 142, -82, 162, -83, -42, 41, -160, 56, -159)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfomk"]
+radius = 37.0
+height = 190.0
 
 [node name="sorting_room" type="Node2D" unique_id=1251005235]
 y_sort_enabled = true
@@ -364,5 +369,17 @@ talk = true
 [node name="Charger" parent="." unique_id=377685486 instance=ExtResource("10_ej2qn")]
 z_index = -1
 position = Vector2(2162, 1320)
+
+[node name="Sort" type="Sprite2D" parent="." unique_id=1077621543]
+position = Vector2(-27, 1336)
+texture = ExtResource("12_yfomk")
+region_enabled = true
+region_rect = Rect2(1315, 428, 190, 70)
+
+[node name="Area2D" type="Area2D" parent="Sort" unique_id=52468676]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sort/Area2D" unique_id=1884757944]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yfomk")
 
 [connection signal="break_trak" from="." to="." method="_on_break_trak"]

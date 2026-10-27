@@ -9,10 +9,12 @@ label Cable_response
 if {response} == "right":
 	cable: Good.
 elif {response} == "neutral":
+	green: *unintellligible grumbling*
 	cable: You are a magnetbot. We work hard and earn our keep. Don't forget.
 else:
-	cable: What kind of magnet bot would have claws? you want to be clawbot that bad? I'm sure there's another network out there to take you.
-	diode: Cable! Green's been doing this for three months. It knows what it's doing.
+	green: Why don't we have claws like the other bots on this floor?
+	cable: What kind of magnet bot would have claws? We could change it out, but it'll take a lot of more out of your limbs than that last fiasco.
+	diode: Cable! Don't scare Green like that. You know Green doesn't like talking about its limbs.
 	set {cable} = true
 [end_timeline]
 label Siren
@@ -24,29 +26,43 @@ else:
 [end_timeline]
 label Siren_response
 if {response} == "right":
-	green: slnas
+	green: I saw a couple bots attached to the ceiling. I didn't know we could do that.
+	siren: You don't need it for your job. I know I can only climb a couple steps myself.
+	siren: It's not something you should worry about. Just focus on your responsibilities.
 elif {response} == "neutral":
-	<Empty Text Event>
+	green: I don't like Haptor. I just wish there's someone I can ask to get it to back off
+	siren: You can't just make excuses and hope someone swoops in to save you. You can depend on your network, because no one else would care enough to tell you otherwise.
 else:
-	<Empty Text Event>
+	green: I'm doing better! I just need to get better at managing my core temperature.
+	siren: That's what I want to hear! You use Hijo's head well.
+	green: Thanks, Siren.
+green: I'm going to go work now.
 set {siren} = true
 [end_timeline]
 label Diode
 if {diode} == true:
 	diode: I'll catch up later! Just need Cable to blow off steam.
 else:
+	diode: Good morning, Green! Ready for another exciting day of sorting?
 	[signal arg="respond"]
 [end_timeline]
 label Diode_response
 if {response} == "right":
-	green: I'll see you after work?
+	green: Yup. I'll see you after work?
 	diode: you know it! glad to see you giving this a try! again.
+	diode: Did you not defrag enough last night? Hijo needed a lot more than the rest of us, you know.
+	green: I did! It's just too early for your sunshine
+	diode: In this station? Ha! I'd be lucky to beat the 24/7 sun outside.
 elif {response} == "neutral":
 	green: I don't think I can join you today. My magnets are gonna need a break after today.
-	Don't worry about it. We can just charge in early and look at the constellations on the other side of the ship.
+	diode: Don't worry about it. We can just charge in early and look at the constellations on the other side of the ship.
+	diode: No giving up on my watch though! You just need to push through today.
 else:
-	green: Can't do today. Sorry.
-	diode: Oh. I thought you might want to stick around longer. But that's okay!
+	green: Can't do today. Sorry. I might just collapse on the sorting floor again.
+	diode: Every day you're sounding more and more like Nysok.
+	diode: Siren!
+	diode: Are you sure we wiped its hardware clean before we build Green?
+	green: Nysok would agree with me.
 diode: Here's a thing I found. Hijo would've wanted you to have it.
 set {diode} = true
 [signal arg="clock"]
